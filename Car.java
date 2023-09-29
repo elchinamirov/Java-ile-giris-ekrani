@@ -1,13 +1,6 @@
 public class Car {
+public static void driving(){
+    System.out.println("i am driving");
 
-
-    public void start() {
-        int a=4;
-        System.out.println(a);
-
-        System.out.println(speed);
-        System.out.println(age);
     }
-    int speed;
-    int age=10;
 }
