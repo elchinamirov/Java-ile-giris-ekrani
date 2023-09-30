@@ -3,8 +3,6 @@ public class MainObjectCreating {
         Car bmw=new Car();
         bmw.color="Green";
         bmw.speed=220;
-
-        Car kia=new Car();
         kia.color="red";
         kia.speed=300;
 
