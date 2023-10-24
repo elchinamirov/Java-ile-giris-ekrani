@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.CheckBox?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
+
+
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.javafx.LoginController">
+   <children>
+      <VBox layoutY="36.0" prefHeight="562.0" prefWidth="600.0">
+         <children>
+            <HBox layoutX="10.0" layoutY="10.0" prefHeight="37.0" prefWidth="600.0" spacing="5.0">
+               <padding>
+                  <Insets bottom="2.0" left="2.0" top="2.0" />
+               </padding>
+               <children>
+                  <Label text="Adress:" textFill="#0a20c6">
+                     <font>
+                        <Font name="System Bold" size="18.0" />
+                     </font>
+                  </Label>
+                  <TextField fx:id="adress" prefHeight="69.0" prefWidth="481.0" promptText="Country, City, Street, Apartment" />
+               </children>
+            </HBox>
+            <HBox layoutX="10.0" layoutY="60.0" prefHeight="50.0" prefWidth="581.0" spacing="5.0">
+               <padding>
+                  <Insets bottom="2.0" left="2.0" top="2.0" />
+               </padding>
+               <children>
+                  <Label text="Phone:" textFill="#0a20c6">
+                     <font>
+                        <Font name="System Bold" size="18.0" />
+                     </font>
+                  </Label>
+                  <TextField fx:id="phone" prefHeight="35.0" prefWidth="203.0" promptText="+994XX-XXX-XX-XX" />
+               </children>
+            </HBox>
+            <Label text="E-mail:" textFill="#0a20c6">
+               <font>
+                  <Font name="System Bold" size="18.0" />
+               </font>
+            </Label>
+            <TextField fx:id="email" prefHeight="35.0" prefWidth="286.0" promptText="example@gmail.com" />
+            <CheckBox mnemonicParsing="false" text="Save as always" />
+            <Button mnemonicParsing="false" onAction="#onSignup" prefHeight="35.0" prefWidth="195.0" text="Save" />
+         </children>
+      </VBox>
+      <HBox prefHeight="35.0" prefWidth="588.0" spacing="5.0">
+         <padding>
+            <Insets bottom="2.0" left="2.0" top="2.0" />
+         </padding>
+         <children>
+            <Label text="Name:" textFill="#0a20c6">
+               <font>
+                  <Font name="System Bold" size="18.0" />
+               </font>
+            </Label>
+            <TextField fx:id="name" promptText="XXXXXX" />
+            <Label layoutX="12.0" layoutY="12.0" text="Surname:" textFill="#0a20c6">
+               <font>
+                  <Font name="System Bold" size="18.0" />
+               </font>
+            </Label>
+            <TextField fx:id="surname" layoutX="73.0" layoutY="12.0" promptText="XXXXXXX" />
+         </children>
+      </HBox>
+   </children>
+</AnchorPane>
