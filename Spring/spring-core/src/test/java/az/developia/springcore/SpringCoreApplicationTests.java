@@ -8,8 +8,8 @@ public class SpringCoreApplicationTests {
 		
 ConfigurableApplicationContext context =
 SpringApplication.run(SpringCoreApplication.class, args);
-Student student = context.getBean(Student.class);
-System.out.println(student.getName());
+//Student student = context.getBean(Student.class);
+//System.out.println(student.getName());
 
 String[] beans = context.getBeanDefinitionNames();
 for (String bean : beans) {

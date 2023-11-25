@@ -2,7 +2,7 @@ package az.developia.springcore;
 
 import org.springframework.stereotype.Component;
 
-@Component
+@Component(value ="nese")
 
 public class Student {
 	private String name;
