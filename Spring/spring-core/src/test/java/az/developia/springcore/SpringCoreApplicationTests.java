@@ -6,10 +6,14 @@ import org.springframework.context.ConfigurableApplicationContext;
 public class SpringCoreApplicationTests {
 	public static void main(String[] args) {
 		
-ConfigurableApplicationContext context =
-SpringApplication.run(SpringCoreApplication.class, args);
-String student = context.getBean(String.class);
-System.out.println(student);
+ConfigurableApplicationContext context =SpringApplication.run(SpringCoreApplication.class, args);
+Student student = context.getBean(Student.class);
+student.setName("Elchin");
+System.out.println(student.getName());
+
+Student student2 = context.getBean(Student.class);
+System.out.println(student2.getName());
+//System.out.println(student.getComputer());
 
 //String[] beans = context.getBeanDefinitionNames();
 // for (String bean : beans) {

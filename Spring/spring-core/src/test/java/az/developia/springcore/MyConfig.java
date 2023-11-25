@@ -41,7 +41,6 @@ public class MyConfig {
 		
 }
 	@Bean
-	
 	public String s1() {
 		System.out.println("s1");
 		return"ok";	}
