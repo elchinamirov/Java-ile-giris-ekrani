@@ -1,13 +1,22 @@
 package az.developia.springcore;
 
-import org.junit.jupiter.api.Test;
-import org.springframework.boot.test.context.SpringBootTest;
+import org.springframework.boot.SpringApplication;
+import org.springframework.context.ConfigurableApplicationContext;
 
-@SpringBootTest
-class SpringCoreApplicationTests {
+public class SpringCoreApplicationTests {
+	public static void main(String[] args) {
+		
+ConfigurableApplicationContext context =
+SpringApplication.run(SpringCoreApplication.class, args);
+Student student = context.getBean(Student.class);
+System.out.println(student.getName());
 
-	@Test
-	void contextLoads() {
-	}
-
+String[] beans = context.getBeanDefinitionNames();
+for (String bean : beans) {
+	System.out.println(bean);
 }
+}
+
+
+	}
+	
