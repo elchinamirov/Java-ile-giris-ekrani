@@ -9,6 +9,7 @@ public class SpringCoreApplicationTests {
 ConfigurableApplicationContext context =
 SpringApplication.run(SpringCoreApplication.class, args);
 Student student = context.getBean(Student.class);
+System.out.println(student.getName());
 System.out.println(student.getComputer());
 
 //String[] beans = context.getBeanDefinitionNames();

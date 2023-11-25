@@ -1,8 +1,10 @@
 package az.developia.springcore;
 
+import org.springframework.context.annotation.Primary;
 import org.springframework.stereotype.Component;
 
-@Component
+@Component(value = "comp")
+//@Primary
 public class Computer {
 	private String model;
 	private int price;

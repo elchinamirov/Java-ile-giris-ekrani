@@ -1,14 +1,18 @@
 package az.developia.springcore;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Qualifier;
+import org.springframework.context.annotation.Primary;
 import org.springframework.stereotype.Component;
 
-@Component(value ="nese")
+@Component
+@Primary
 
 public class Student {
 	private String name;
 	private String surname;
 	@Autowired
+	@Qualifier(value = "myComputer")
 private Computer computer;
 	
 	public Student() {
