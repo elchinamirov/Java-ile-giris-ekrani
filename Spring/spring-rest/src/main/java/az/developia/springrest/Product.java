@@ -2,9 +2,15 @@ package az.developia.springrest;
 
 import java.time.LocalDateTime;
 
+import org.springframework.web.bind.annotation.DeleteMapping;
+import org.springframework.web.bind.annotation.PathVariable;
+
 import com.fasterxml.jackson.annotation.JsonFormat;
 
+
+
 public class Product {
+	
 	
 	private Integer id; // db
 	private String name; // user
@@ -51,6 +57,7 @@ public class Product {
 	}
 	public Product(Integer id, String name, Double cost, Double price, String barcode, LocalDateTime register) {
 		super();
+		System.out.println("ok");
 		this.id = id;
 		this.name = name;
 		this.cost = cost;
@@ -58,11 +65,22 @@ public class Product {
 		this.barcode = barcode;
 		this.register = register;
 	}
+public Product() {
+}
 	@Override
 	public String toString() {
 		return "Product [id=" + id + ", name=" + name + ", cost=" + cost + ", price=" + price + ", barcode=" + barcode
 				+ ", register=" + register + "]";
 	}
+	
+	@DeleteMapping(path="/{id}") //   /product/3
+	public void deleteById(@PathVariable Integer id) {
+		
+		System.out.println(id);
+		
+	}
+	
+
 	
 	
 
