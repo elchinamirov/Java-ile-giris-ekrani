@@ -73,12 +73,7 @@ public Product() {
 				+ ", register=" + register + "]";
 	}
 	
-	@DeleteMapping(path="/{id}") //   /product/3
-	public void deleteById(@PathVariable Integer id) {
-		
-		System.out.println(id);
-		
-	}
+	
 	
 
 	
