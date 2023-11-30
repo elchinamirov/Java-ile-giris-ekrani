@@ -69,14 +69,15 @@ public class Product {
 		this.barcode = barcode;
 		this.register = register;
 	}
-public Product() {
-}
+
 	@Override
 	public String toString() {
 		return "Product [id=" + id + ", name=" + name + ", cost=" + cost + ", price=" + price + ", barcode=" + barcode
 				+ ", register=" + register + "]";
 	}
 	
+	public Product() {
+}
 	
 	
 

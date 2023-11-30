@@ -36,13 +36,8 @@ public void addProduct(@RequestBody Product product) {
 }
 @GetMapping
 public List <Product> findAll(){
-	List<Product> products=new ArrayList<Product>();
-	products.add(new Product(2, "Alma", 3D, 7D, "002", LocalDateTime.of(2020, 3, 15, 11, 15,0)));
-	products.add(new Product(5, "Alca", 5D, 7D, "003", LocalDateTime.of(2020, 3, 15, 11, 15,0)));
-	products.add(new Product(6, "Nar", 3D, 7D, "004", LocalDateTime.of(2020, 3, 15, 11, 15,0)));
-	products.add(new Product(6, "Nar", 3D, 7D, "004", LocalDateTime.of(2020, 3, 15, 11, 15,0)));
-
-	return products;
+	
+	return productRepository.findAll();
 	}
 @DeleteMapping(path="/{id}") //   /product/3
 public void deleteById(@PathVariable Integer id) {
