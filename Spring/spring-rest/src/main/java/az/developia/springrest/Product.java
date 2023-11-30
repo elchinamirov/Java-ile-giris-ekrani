@@ -2,16 +2,20 @@ package az.developia.springrest;
 
 import java.time.LocalDateTime;
 
-import org.springframework.web.bind.annotation.DeleteMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-
 import com.fasterxml.jackson.annotation.JsonFormat;
 
+import jakarta.persistence.Entity;
+import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.GenerationType;
+import jakarta.persistence.Id;
+import jakarta.persistence.Table;
 
-
+@Entity
+@Table(name = "products")
 public class Product {
 	
-	
+	@Id
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Integer id; // db
 	private String name; // user
 	private Double cost; // user
