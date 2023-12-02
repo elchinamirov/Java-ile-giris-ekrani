@@ -4,12 +4,8 @@ import java.time.LocalDateTime;
 import java.util.List;
 import java.util.Optional;
 
-import javax.management.RuntimeErrorException;
-
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.beans.factory.support.BeanDefinitionReaderUtils;
 import org.springframework.web.bind.annotation.DeleteMapping;
-import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -66,7 +62,7 @@ if (finded.isPresent()) {
 public void update(@RequestBody Product product) {
 	
 	if (product.getId()==null || product.getId()<1) {
-		throw new RuntimeException("ID bos ola ve ya movcud olmaya bilmez");
+		throw new OurRuntimeException("ID bos ola ve ya movcud olmaya bilmez");
 	}
 	Optional<Product> finded = productRepository.findById(product.getId());
 
@@ -75,23 +71,34 @@ public void update(@RequestBody Product product) {
 		productRepository.save(product);
 		
 	}else {
-		throw new RuntimeException("ID tapilmadi ve redakte etmek olmaz");
+		throw new OurRuntimeException("ID tapilmadi ve redakte etmek olmaz");
+	}	
+}
 
-
+@GetMapping(path = "/barcode/{barcode}")   //Query
+public  Product findByBarcode(@PathVariable String barcode){
+	Product p = productRepository.findByBarcode(barcode);
+	if (p==null) {
+		throw new OurRuntimeException("Mehsul Tapilmadi");	
 	}
-	
-	
-	
-	
-	
-}
+	else {
+           return p;
+	}
+
+/*
+ 
+@ExceptionHandler                                             .
+public String handleOurRuntimeException(RuntimeException e) {
+return e.getMessage();}
+
+
+            Elverissiz oldugu ucun yeni class yaradildi
+ 
+*/
+
+
+}}
 
 
 
-@ExceptionHandler
-public String nese(RuntimeException e) {
-	return e.getMessage();
-}
 
-
-}
