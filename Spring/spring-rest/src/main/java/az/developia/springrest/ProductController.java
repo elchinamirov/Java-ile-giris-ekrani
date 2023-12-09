@@ -92,7 +92,15 @@ public  Product findByBarcode(@PathVariable String barcode){
 	}
 	else {
            return p;
-	} 
+	}}
+	
+	
+	@GetMapping(path = "/hamiya")   
+
+	public  String test( ){
+		
+	           return "test";
+		}}
 
 /*
  
@@ -106,7 +114,7 @@ return e.getMessage();}
 */
 
 
-}}
+
 
 
 

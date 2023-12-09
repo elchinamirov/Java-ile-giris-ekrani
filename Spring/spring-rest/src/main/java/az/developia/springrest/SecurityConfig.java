@@ -68,7 +68,16 @@ private DataSource dataSource;
 		 TOKEN-in novleri var
 	         1)BASIC= Username ve parol gelir servere.Server baxir eger varsa, icaze verir.
 	         2)JWT
-	         3)ldap*/
+	         3)ldap
+	         
+	         *Errorlarin novleri
+	         
+	         1) 401 = Username ve password sehvdir ve ya yoxdur.
+	        
+	         2) 403 = Username ve password duzdir, amma metodun yoxdur.
+	         
+	         3) 500 = Kdda xeta var.ecurity ile elaqeli deyil.
+	 */
 	}
 
 	
