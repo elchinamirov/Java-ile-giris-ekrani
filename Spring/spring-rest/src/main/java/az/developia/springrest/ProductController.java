@@ -5,6 +5,7 @@ import java.util.List;
 import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -24,6 +25,7 @@ public class ProductController {
 	
 	
 @PostMapping
+@PreAuthorize(value = "hasAuthority('ROLE_ADD_PRODUCT')") // 403 or 200
 public void addProduct(@RequestBody Product product) {
 	// add this object to database
 	// id must be generated on db
@@ -35,6 +37,7 @@ public void addProduct(@RequestBody Product product) {
 	
 	//System.out.println(product);
 }
+@PreAuthorize(value = "hasAuthority('ROLE_GET_PRODUCT')") 
 @GetMapping
 public List <Product> findAll(){
 	
@@ -42,6 +45,8 @@ public List <Product> findAll(){
 	}
 
 @DeleteMapping(path="/{id}") //   /product/3
+@PreAuthorize(value = "hasAuthority('ROLE_DELETE_PRODUCT')") 
+
 public String deleteById(@PathVariable Integer id) {
 	
 Optional<Product> finded = productRepository.findById(id);
@@ -59,6 +64,8 @@ if (finded.isPresent()) {
 }
 
 @PutMapping
+@PreAuthorize(value = "hasAuthority('ROLE_UPDATE_PRODUCT')") 
+
 public void update(@RequestBody Product product) {
 	
 	if (product.getId()==null || product.getId()<1) {
@@ -76,6 +83,8 @@ public void update(@RequestBody Product product) {
 }
 
 @GetMapping(path = "/barcode/{barcode}")   //Query
+@PreAuthorize(value = "hasAuthority('ROLE_SEARCH_PRODUCT')") // 403 or 200
+
 public  Product findByBarcode(@PathVariable String barcode){
 	Product p = productRepository.findByBarcode(barcode);
 	if (p==null) {
@@ -83,7 +92,7 @@ public  Product findByBarcode(@PathVariable String barcode){
 	}
 	else {
            return p;
-	}
+	} 
 
 /*
  
