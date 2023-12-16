@@ -1,15 +1,35 @@
 package az.developia.springrest;
 
+import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.ExceptionHandler;
+import org.springframework.web.bind.annotation.ResponseStatus;
 import org.springframework.web.bind.annotation.RestControllerAdvice;
 
 @RestControllerAdvice
 public class XetaUcun {
-	@ExceptionHandler
-	public String handleOurRuntimeException(OurRuntimeException e) {
-		return e.getMessage();
-	}
 
+	@ExceptionHandler
+	@ResponseStatus(code = HttpStatus.BAD_REQUEST)
+	public ErrorResponse handleOurRuntimeException(OurRuntimeException e) {
+		
+		ErrorResponse resp=new ErrorResponse();
+		resp.setMessage(e.getMessage());
+		resp.setInternalMessage("developer gorecek");
+		
+		return resp;
+	}
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+// best practices korlanib
+	//validation
 }
 
 
