@@ -104,7 +104,12 @@ public  Product findByBarcode(@PathVariable String barcode){
 		
 	           return "test";
 		}
-	
+	@PreAuthorize(value = "hasAuthority('ROLE_GET_PRODUCT')") 
+	@GetMapping(path ="/{id}")
+	public Product findById(@PathVariable Integer id ){
+		
+		return productRepository.findById(id).get();
+		}
 
 
 

@@ -23,7 +23,7 @@ public class Product {
 	private Double price; // user
 	@Column(unique = true) //MySql xanalardanda ede bilerdik
 	private String barcode; // user
-	@JsonFormat(pattern = "yyyy-MM-dd")
+	@JsonFormat(pattern = "yyyy-MM-dd HH:mm:ss")
 	private LocalDateTime register; // bar code
 	public Integer getId() {
 		return id;

@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Yeni mehsul</title>
+
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/css/bootstrap.min.css">
+    <script src="https://cdn.jsdelivr.net/npm/jquery@3.7.1/dist/jquery.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/js/bootstrap.bundle.min.js"></script>
+
+
+</head>
+<body>
+
+    <form style="margin:auto;width: 25%;" onsubmit="saveProduct(event)">
+      <label>Ad</label>
+      <input class="form-control" id="product-name" >
+      
+      <label>Maya deyeri</label>
+      <input class="form-control" id="product-cost" >
+
+      <label>Qiymet</label>
+      <input class="form-control" id="product-price" >
+      
+      <label>Bar kod</label>
+      <input class="form-control" id="product-barcode" ><br>  
+
+      <button class="btn btn-success" type="submit">Yadda saxla</button>
+      
+
+    </form>
+
+    <script src="js/save-product.js"></script>
+</body>
+</html>
