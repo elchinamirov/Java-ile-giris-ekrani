@@ -20,13 +20,14 @@ student.sinif=sinif;
 
 let xml= new XMLHttpRequest();
 
-    xml.onload=function(){
-     alert('Telebe yadda saxlanildi');
-     window.location.href='students.html';
-     }
+    
 
 
     if(editMode){
+        xml.onload=function(){
+            alert('Mehsul yadda saxlandi');
+            //window.location.href='products.html';
+          }
         //burada redakte apisine gonder 
         
 //product.id=Number(localStorage.getItem('productId'));
@@ -38,6 +39,16 @@ xml.open('PUT','http://localhost:8080/students',true);
     xml.send(JSON.stringify(student));
 
     }else{
+
+        xml.onload=function(){
+            if(this.status==400){
+              alert(JSON.parse(this.responseText).message);
+            }else{
+              alert('Mehsul yadda saxlandi');
+             window.location.href='products.html';
+            }
+            
+          }
     
     xml.open('POST','http://localhost:8080/students',true);
     xml.setRequestHeader('Authorization',localStorage.getItem('token'));
