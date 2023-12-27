@@ -25,12 +25,12 @@ let xml= new XMLHttpRequest();
 
     if(editMode){
         xml.onload=function(){
-            alert('Mehsul yadda saxlandi');
-            //window.location.href='products.html';
+            alert('Telebe yadda saxlandi');
+            window.location.href='students.html';
           }
         //burada redakte apisine gonder 
         
-//product.id=Number(localStorage.getItem('productId'));
+//student.id=Number(localStorage.getItem('studentId'));
 
 xml.open('PUT','http://localhost:8080/students',true);
     xml.setRequestHeader('Authorization',localStorage.getItem('token'));
@@ -44,8 +44,8 @@ xml.open('PUT','http://localhost:8080/students',true);
             if(this.status==400){
               alert(JSON.parse(this.responseText).message);
             }else{
-              alert('Mehsul yadda saxlandi');
-             window.location.href='products.html';
+              alert('Telebe yadda saxlandi');
+             window.location.href='students.html';
             }
             
           }

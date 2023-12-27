@@ -1,8 +1,10 @@
 function loadStudent(){
     let xml= new XMLHttpRequest();
     xml.onload=function(){
-     let array=JSON.parse(this.responseText);
- 
+
+        let res=JSON.parse(this.responseText);
+        let array=res.students; 
+
      let tbody=document.getElementById('students-tbody');
      
      let tbodyValue='<tr>';
@@ -57,5 +59,7 @@ if(c){
 function logout(){
     localStorage.removeItem('token');
     window.location.href='index.html';
-}
-}
+}}
+
+document.getElementById('username_p').innerHTML=localStorage.getItem('username');
+
