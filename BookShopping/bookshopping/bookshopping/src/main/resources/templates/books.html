@@ -4,11 +4,20 @@
 	
 	<head>
 		<title>Kitablar</title>
+		
 		<style>
-			table,th,td{
-				border: 1px solid black;}
+			
+			table,th,td{border: 1px solid black;}
+				
 				table{border-collapse: collapse ; width: 100%;}
+				
+				th{padding: 5px;background-color:tan ;}
+				
+				td{padding: 5px;background-color:antiquewhite ;}
+
+                td:hover{ font-weight:bold; color:  sienna;cursor: pointer ;}
 		</style>
+		
 	</head>
 	
 	<body>
@@ -22,6 +31,7 @@
 				<tr th:each="book : ${books}">
 					
 					<td th:text="${book.id}"></td>
+					
 				    <td th:text="${book.name}"></td>
 
 				</tr>
