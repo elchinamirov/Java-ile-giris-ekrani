@@ -1,6 +1,6 @@
 <!DOCTYPE html>
 
-<html lang="en" xmlns:th="http://www.thymeLeaf.org">
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
 	
 	<head>
 		<title>Kitablar</title>
@@ -16,11 +16,21 @@
 				td{padding: 5px;background-color:antiquewhite ;}
 
                 td:hover{ font-weight:bold; color:  sienna;cursor: pointer ;}
+		        
+		        #new-book-button{display: block; padding: 5px 10px;
+		        background-color: rgb(165, 144, 139); width: 75px; text-align: center; border-radius: 10px ;text-decoration: none;}
+		        #new-book-button:hover{background-color: rgb(128, 128, 64); cursor: pointer; }
+		        
+		        
+		        
+		        
 		</style>
 		
 	</head>
 	
 	<body>
+		
+		<a th:href="@{/books/new}" id="new-book-button">Yeni Kitab</a>
 		
 		<table>
 			
