@@ -3,34 +3,43 @@
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
 	
 	<head>
+		
 		<title>Yeni kitab</title>
-	</head>
+		
+		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+
+<style>#book-register-form{width: 300px; margin: auto}</style>
+
+</head>
+	
 	<body>
-		<h1>Yeni Kitab</h1>
 		
-		<form th:action="@{/books/new-book-process}" method="POST" th:object="${book}">
+		<h1 style="text-align: center;">Yeni Kitab</h1>
+		
+		<form th:action="@{/books/new-book-process}" method="POST" th:object="${book}" id="book-register-form">
 		
 		
-		<label for="book-name">Ad: </label>	
-		<input id="book-name" th:field="*{name}"/>
+		<div class="form-group"><label for="book-name">Ad: </label>	
+		<input class="form-control" id="book-name" th:field="*{name}"/></div>
 		
+		<div class="form-group"><label for="book-description">Təsvir: </label>	
+		<textarea class="form-control" id="book-description" th:field="*{description}"></textarea></div>
+		
+		<div class="form-group"><label for="book-price">Qiymət: </label>	
+		<input class="form-control" type="number" th:field="*{price}"/></div>
+
+		<div class="form-group"><label for="book-author">Müəllif: </label>	
+		<input class="form-control" id="book-author" th:field="*{author}"/></div>
+
+		<div class="form-group"><label for="book-page-count">Səhifə sayı: </label>	
+		<input class="form-control" type="book-page-count" th:field="*{pageCount}"/></div>
+
+		<div class="form-group"><label for="book-image">Şəkil: </label>	
+		<input class="form-control" type="book-image" th:field="*{image}"/></div>
+
 			
-		<label for="book-description">Təsvir: </label>	
-		<textarea id="book-description" th:field="*{description}"></textarea>
+		<input class="btn btn-success" type="submit" value="Qeydiyyat" />
 		
-		<label for="book-price">Qiymət: </label>	
-		<input type="number" th:field="*{price}"/>
-		
-		<label for="book-author">Müəllif: </label>	
-		<input id="book-author" th:field="*{author}"/>
-
-        <label for="book-page-count">Səhifə sayı: </label>	
-		<input type="book-page-count" th:field="*{pageCount}"/>
-		
-		<label for="book-image">Şəkil: </label>	
-		<input type="book-image" th:field="*{image}"/>
-
-		<input type="submit" value="Qeydiyyat" />
 		</form>
 		
 	</body>
