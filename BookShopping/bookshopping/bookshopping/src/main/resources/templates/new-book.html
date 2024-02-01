@@ -20,6 +20,15 @@
 		
 		<label for="book-price">Qiymət: </label>	
 		<input type="number" th:field="*{price}"/>
+		
+		<label for="book-author">Müəllif: </label>	
+		<input id="book-author" th:field="*{author}"/>
+
+        <label for="book-page-count">Səhifə sayı: </label>	
+		<input type="book-page-count" th:field="*{pageCount}"/>
+		
+		<label for="book-image">Şəkil: </label>	
+		<input type="book-image" th:field="*{image}"/>
 
 		<input type="submit" value="Qeydiyyat" />
 		</form>

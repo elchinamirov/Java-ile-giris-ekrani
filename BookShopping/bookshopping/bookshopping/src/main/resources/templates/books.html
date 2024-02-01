@@ -34,7 +34,7 @@
 		
 		<table>
 			
-			<thead>  <tr>  <th>ID</th> <th>Ad</th> <th>Təsvir</th> <th>Qiymət</th>  </tr>  </thead>
+			<thead>  <tr>  <th>ID</th> <th>Ad</th> <th>Təsvir</th> <th>Qiymət</th> <th>Müəllif</th> <th>Səhifə sayı</th> <th>Şəkil</th> </tr>  </thead>
 			
 			<tbody>
 				
@@ -47,6 +47,13 @@
 				    <td th:text="${book.description}"></td>
 				    
 				    <td th:text="${book.price}"></td>
+				    
+                    <td th:text="${book.author}"></td>
+
+                    <td th:text="${book.pageCount}"></td>
+                    
+                    <td th:text="${book.image}"></td>
+
 
 				</tr>
 				
