@@ -3,10 +3,18 @@ package az.developia.restaurantelchinemirov.model;
 	import java.time.LocalDateTime;
 
 	import com.fasterxml.jackson.annotation.JsonFormat;
-
-	 
+	import jakarta.persistence.Entity;
+	import jakarta.persistence.GeneratedValue;
+	import jakarta.persistence.GenerationType;
+	import jakarta.persistence.Id;
+	import jakarta.persistence.Table;
+	@Entity
+	 @Table(name="products")
 	public class Product {
 		 
+		@Id
+		 @GeneratedValue(strategy = GenerationType.IDENTITY)
+		
 		private Integer id;// db
 		private String name;// user
 		
@@ -48,6 +56,7 @@ package az.developia.restaurantelchinemirov.model;
 		}
 		public Product(Integer id, String name, Double price, String barcode, LocalDateTime register) {
 			super();
+			System.out.println("ok");
 			this.id = id;
 			this.name = name;
 			this.price = price;
@@ -59,5 +68,8 @@ package az.developia.restaurantelchinemirov.model;
 			return "Product [id=" + id + ", name=" + name + ", price=" + price + ", barcode=" + barcode
 					+ ", register=" + register + "]";
 		
+		}
+		public Product() {
+			// TODO Auto-generated constructor stub
 		}
 }
