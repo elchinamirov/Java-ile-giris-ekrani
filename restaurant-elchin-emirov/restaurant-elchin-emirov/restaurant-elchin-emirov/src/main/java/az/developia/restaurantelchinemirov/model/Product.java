@@ -1,6 +1,7 @@
 package az.developia.restaurantelchinemirov.model;
 
 	import java.time.LocalDateTime;
+	import jakarta.persistence.Column;
 
 	import com.fasterxml.jackson.annotation.JsonFormat;
 	import jakarta.persistence.Entity;
@@ -19,6 +20,8 @@ package az.developia.restaurantelchinemirov.model;
 		private String name;// user
 		
 		private Double price;// user
+		@Column(unique = true)
+
 		private String barcode; // user
 		@JsonFormat(pattern = "yyyy-MM-dd")
 		private LocalDateTime register; // bar code

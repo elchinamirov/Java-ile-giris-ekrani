@@ -3,17 +3,18 @@ package az.developia.restaurantelchinemirov.controller;
 import java.time.LocalDateTime;
 import java.util.List;
 import java.util.Optional;
-import org.springframework.web.bind.annotation.ExceptionHandler;
-import org.springframework.web.bind.annotation.PutMapping;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.DeleteMapping;
+import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
+import az.developia.restaurantelchinemirov.exception.OurRuntimeException;
 
 import az.developia.restaurantelchinemirov.model.Product;
 import az.developia.restaurantelchinemirov.repository.ProductRepository;
@@ -70,7 +71,7 @@ public String deleteById(@PathVariable Integer id) {
 public void update(@RequestBody Product product) {
 	
 	if (product.getId() == null || product.getId() < 1) {
-		throw new RuntimeException("id bos veya olmayan ola bilmez");
+		throw new OurRuntimeException("id bos veya olmayan ola bilmez");
 	}
 
 	Optional<Product> finded = productRepository.findById(product.getId());
@@ -78,12 +79,19 @@ public void update(@RequestBody Product product) {
 	if (finded.isPresent()) {
 		productRepository.save(product);
 	} else {
-		throw new RuntimeException("id tapimadi ve redakte etmek olmaz");
+		throw new OurRuntimeException("id tapimadi ve redakte etmek olmaz");
 	}
 
 }
-@ExceptionHandler
-public String hanssdfsdfsdfsd(RuntimeException e) {
-	return e.getMessage();
-		}}
+@GetMapping(path="/barcode/{barcode}")
+public  Product findByBarcode(@PathVariable String barcode) {
+	Product p = productRepository.findByBarcode(barcode);
+	if(p==null) {
+		throw new OurRuntimeException("mehsul tapilmadi");
+	}
+	else {
+		return p;
+	}
+	
+}}
 	
