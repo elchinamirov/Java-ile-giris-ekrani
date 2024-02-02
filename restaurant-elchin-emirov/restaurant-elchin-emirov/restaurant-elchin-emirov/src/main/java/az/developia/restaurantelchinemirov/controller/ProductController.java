@@ -2,6 +2,9 @@ package az.developia.restaurantelchinemirov.controller;
 
 import java.time.LocalDateTime;
 import java.util.List;
+import java.util.Optional;
+import org.springframework.web.bind.annotation.ExceptionHandler;
+import org.springframework.web.bind.annotation.PutMapping;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.DeleteMapping;
@@ -32,6 +35,7 @@ public class ProductController {
 				// register must be config
 
 				product.setRegister(LocalDateTime.now());
+				product.setId(null);
 
 				productRepository.save(product);
 				
@@ -46,11 +50,40 @@ public class ProductController {
 			}
 
 			//
-			@DeleteMapping(path = "/{id}") // /products/3
-			public void deleteById(@PathVariable Integer id) {
+			
+			
+@DeleteMapping(path = "/{id}")
+public String deleteById(@PathVariable Integer id) {
+	Optional<Product> finded = productRepository.findById(id);
 
-				System.out.println(id);
-			}
+	if (finded.isPresent()) {
 
-		}
+		productRepository.deleteById(id);
+		return "tapdin ve sildim";
+	} else {
+		return "id tapilmadi, id = " + id;
+	}
+
+}
+
+@PutMapping
+public void update(@RequestBody Product product) {
+	
+	if (product.getId() == null || product.getId() < 1) {
+		throw new RuntimeException("id bos veya olmayan ola bilmez");
+	}
+
+	Optional<Product> finded = productRepository.findById(product.getId());
+
+	if (finded.isPresent()) {
+		productRepository.save(product);
+	} else {
+		throw new RuntimeException("id tapimadi ve redakte etmek olmaz");
+	}
+
+}
+@ExceptionHandler
+public String hanssdfsdfsdfsd(RuntimeException e) {
+	return e.getMessage();
+		}}
 	
