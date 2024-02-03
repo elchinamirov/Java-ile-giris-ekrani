@@ -3,6 +3,7 @@ package az.developia.restaurantelchinemirov.controller;
 import java.time.LocalDateTime;
 import java.util.List;
 import java.util.Optional;
+import org.springframework.security.access.prepost.PreAuthorize;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.DeleteMapping;
@@ -30,6 +31,7 @@ public class ProductController {
 
 
 	@PostMapping
+	@PreAuthorize(value = "hasAuthority('ROLE_ADD_PRODUCT')") // 403 200
 	public void addProduct(@RequestBody Product product) {
 		        // add this obj to db
 				// id must be generated on db
@@ -54,6 +56,9 @@ public class ProductController {
 			
 			
 @DeleteMapping(path = "/{id}")
+@PreAuthorize(value = "hasAuthority('ROLE_DELETE_PRODUCT')")
+
+
 public String deleteById(@PathVariable Integer id) {
 	Optional<Product> finded = productRepository.findById(id);
 
@@ -68,8 +73,10 @@ public String deleteById(@PathVariable Integer id) {
 }
 
 @PutMapping
+@PreAuthorize(value = "hasAuthority('ROLE_UPDATE_PRODUCT')")
+
 public void update(@RequestBody Product product) {
-	
+
 	if (product.getId() == null || product.getId() < 1) {
 		throw new OurRuntimeException("id bos veya olmayan ola bilmez");
 	}
@@ -83,15 +90,23 @@ public void update(@RequestBody Product product) {
 	}
 
 }
-@GetMapping(path="/barcode/{barcode}")
-public  Product findByBarcode(@PathVariable String barcode) {
-	Product p = productRepository.findByBarcode(barcode);
-	if(p==null) {
+@GetMapping(path = "/barcode/{barcode}")
+@PreAuthorize(value = "hasAuthority('ROLE_SEARCH_PRODUCT')")
+public Product findByBarcode(@PathVariable String barcode) {
+Product p = productRepository.findByBarcode(barcode);
+	if (p == null) {
 		throw new OurRuntimeException("mehsul tapilmadi");
-	}
-	else {
+	
+	} else {
 		return p;
 	}
-	
-}}
+
+}
+@GetMapping(path = "/hamiya")
+
+public String test( ) {
+	return "test";
+
+}
+}
 	
