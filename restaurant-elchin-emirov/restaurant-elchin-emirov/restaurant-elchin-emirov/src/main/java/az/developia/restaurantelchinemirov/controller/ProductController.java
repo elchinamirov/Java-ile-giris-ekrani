@@ -65,9 +65,12 @@ public String deleteById(@PathVariable Integer id) {
 	if (finded.isPresent()) {
 
 		productRepository.deleteById(id);
-		return "tapdin ve sildim";
+		return "tapdim ve sildim";
 	} else {
-		return "id tapilmadi, id = " + id;
+		// return "id tapilmadi, id = " + id;
+					//
+					throw new OurRuntimeException("id tapilmadi, id = " + id);
+				
 	}
 
 }
@@ -107,6 +110,12 @@ Product p = productRepository.findByBarcode(barcode);
 public String test( ) {
 	return "test";
 
+}
+@PreAuthorize(value = "hasAuthority('ROLE_GET_PRODUCT')")
+@GetMapping(path="/{id}")
+public  Product  finById(@PathVariable Integer id) {
+
+	return productRepository.findById(id).get();
 }
 }
 	

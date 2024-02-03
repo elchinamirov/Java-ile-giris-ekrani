@@ -23,7 +23,7 @@ package az.developia.restaurantelchinemirov.model;
 		@Column(unique = true)
 
 		private String barcode; // user
-		@JsonFormat(pattern = "yyyy-MM-dd")
+		@JsonFormat(pattern = "yyyy-MM-dd HH:mm:ss")
 		private LocalDateTime register; // bar code
 		
 		public Integer getId() {
