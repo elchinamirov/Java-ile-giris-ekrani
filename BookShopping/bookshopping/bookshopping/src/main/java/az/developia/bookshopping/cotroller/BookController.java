@@ -2,6 +2,7 @@ package az.developia.bookshopping.cotroller;
 
 import java.util.List;
 
+import org.apache.el.stream.Optional;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -58,7 +59,7 @@ public class BookController {
 			if (bookExists) {
 				
 						bookDAO.deleteById(id);
-			}else {
+			} else {
 				
 			}
 			
@@ -66,6 +67,27 @@ public class BookController {
 				model.addAttribute("books", books);
 				
                         return "redirect:/books";
+			
+		}
+		@GetMapping(path = "/books/edit/{id}")
+		public String editBook (@PathVariable(name="id") Integer id, Model model) {
+			
+			java.util.Optional<Book> bookOptional=bookDAO.findById(id);
+			
+			boolean bookExists=bookOptional.isPresent();
+			
+			Book book= new Book();
+			
+			if (bookExists) {	
+				
+			book=bookOptional.get();
+			
+			} else {
+				
+			}
+				model.addAttribute("book", book);
+				
+                        return "new-book";
 			
 		}
 		}
