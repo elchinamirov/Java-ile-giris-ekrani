@@ -7,25 +7,36 @@
 	   <meta charset="utf-8">
 				
 	   <title>Menu</title>
+	   	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+
 	
 	</head>
 	
 	<body>
 		
 		<div th:fragment="menu">
-			
-			<ul>
+			<nav class="navbar navbar-expand-sm bg-dark navbar-dark">
+			<ul class="navbar-nav">
 				
-				<li>Əsas səhifə</li>
+				<li class="nav-item"></li><a class="nav-link" th:href="@{/}">Əsas səhifə</li>
 				
-				<li>Kitablar</li>
+				<li class="nav-item"></li><a class="nav-link" th:href="@{/books}">Kitablar</li>
 				
-				<li>Sifarişlər</li>
+				<li class="nav-item"></li><a class="nav-link" th:href="@{/orders}">Sifarişlər</li>
 				
-				<li>Alıcı</li>
+				<li class="nav-item"></li><a class="nav-link" th:href="@{/customer}">Alıcı</li>
 
 			</ul>
-		
+			
+			<ul class="navbar-nav navbar-collapse justify-content-end">
+				
+			<li><a class="nav-link" th:href="@{/login}">Giriş</a></li> 
+			
+			<li><a class="nav-link" th:href="@{/logout}">Çıxış</a></li> 
+
+			</ul>
+			
+		</nav>
 		</div>
 		
 	</body>
