@@ -4,7 +4,7 @@
 	
 	<head>
 		
-		<title>Yeni kitab</title>
+		<title th:text="${header}">Yeni kitab</title>
 		
 		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
 
@@ -16,9 +16,8 @@
 		
 		
 		
-		<h1 th:text="${yeniheader}" style="text-align: center; color: mediumseagreen;">Yeni Kitab</h1>
+		<h1 th:text="${header}" style="text-align: center; color: mediumseagreen;">Yeni Kitab</h1>
 		
-		<h2 th:text="${redakteheader}" style="text-align: center; color: rgb(128, 0, 255);">Kitab Redaktəsi</h2>
 
 
 

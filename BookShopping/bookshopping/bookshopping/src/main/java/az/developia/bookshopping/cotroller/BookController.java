@@ -33,7 +33,7 @@ public class BookController {
 		public String openNewBookPage (Model model) {
 			Book book=new Book();
 			model.addAttribute("book", book);
-			model.addAttribute("yeniheader", "Yeni kitab");
+			model.addAttribute("header", "Yeni kitab");
 
                         return "new-book";
 			
@@ -52,7 +52,7 @@ public class BookController {
 			List<Book> books= bookDAO.findAll();
 			model.addAttribute("books", books);
 			
-			return "books";
+			return "redirect:/books";
 			
 		}
 		@GetMapping(path = "/books/delete/{id}")
@@ -88,7 +88,7 @@ public class BookController {
 				
 			}
 				model.addAttribute("book", book);
-				model.addAttribute("redakteheader", "Kitab redaktəsi");
+				model.addAttribute("header", "Kitab redaktəsi");
 
 				
                         return "new-book";
