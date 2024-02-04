@@ -14,10 +14,19 @@
 	
 	<body>
 		
-		<h1 style="text-align: center;">Yeni Kitab</h1>
 		
+		
+		<h1 th:text="${yeniheader}" style="text-align: center; color: mediumseagreen;">Yeni Kitab</h1>
+		
+		<h2 th:text="${redakteheader}" style="text-align: center; color: rgb(128, 0, 255);">Kitab Redaktəsi</h2>
+
+
+
+
+
 		<form th:action="@{/books/new-book-process}" method="POST" th:object="${book}" id="book-register-form">
 		
+		<input type="hidden" th:field="*{id}"/>
 		
 		<div class="form-group"><label for="book-name">Ad: </label>	
 		<input class="form-control" id="book-name" th:field="*{name}"/></div>
@@ -38,8 +47,8 @@
 		<input class="form-control" type="book-image" th:field="*{image}"/></div>
 
 			
-		<input class="btn btn-success" type="submit" value="Qeydiyyat" />
-		
+				<input class="btn btn-success" type="submit" value="Yadda saxla" />
+
 		</form>
 				<a th:href="@{/books}">Kitabların siyahısı</a>
 

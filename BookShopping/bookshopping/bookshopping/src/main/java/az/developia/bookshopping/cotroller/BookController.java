@@ -33,6 +33,8 @@ public class BookController {
 		public String openNewBookPage (Model model) {
 			Book book=new Book();
 			model.addAttribute("book", book);
+			model.addAttribute("yeniheader", "Yeni kitab");
+
                         return "new-book";
 			
 		}
@@ -86,6 +88,8 @@ public class BookController {
 				
 			}
 				model.addAttribute("book", book);
+				model.addAttribute("redakteheader", "Kitab redaktəsi");
+
 				
                         return "new-book";
 			
