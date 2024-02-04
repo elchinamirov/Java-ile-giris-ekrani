@@ -14,9 +14,9 @@ public class Book {
 	private Integer id;
 	private String name;
 	private String description;
-	private String price;
+	private Double price;
 	private String author;
-	private String pageCount;
+	private Integer pageCount;
 	private String image;
 	private String username;
 
@@ -39,10 +39,10 @@ public class Book {
 	public void setDescription(String description) {
 		this.description = description;
 	}
-	public String getPrice() {
+	public Double getPrice() {
 		return price;
 	}
-	public void setPrice(String price) {
+	public void setPrice(Double price) {
 		this.price = price;
 	}
 	public String getAuthor() {
@@ -51,10 +51,10 @@ public class Book {
 	public void setAuthor(String author) {
 		this.author = author;
 	}
-	public String getPageCount() {
+	public Integer getPageCount() {
 		return pageCount;
 	}
-	public void setPageCount(String pageCount) {
+	public void setPageCount(Integer pageCount) {
 		this.pageCount = pageCount;
 	}
 	public String getImage() {
