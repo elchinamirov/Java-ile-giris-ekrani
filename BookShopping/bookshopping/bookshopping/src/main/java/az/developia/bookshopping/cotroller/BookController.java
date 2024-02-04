@@ -12,6 +12,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 
 import az.developia.bookshopping.dao.BookDAO;
 import az.developia.bookshopping.model.Book;
+import ch.qos.logback.core.joran.conditional.IfAction;
 
 
 @Controller
@@ -53,9 +54,18 @@ public class BookController {
 		}
 		@GetMapping(path = "/books/delete/{id}")
 		public String deleteBook (@PathVariable(name="id") Integer id, Model model) {
+			boolean bookExists=bookDAO.findById(id).isPresent();
+			if (bookExists) {
+				
+						bookDAO.deleteById(id);
+			}else {
+				
+			}
 			
-			System.out.println(id);
-                        return "books";
+			List<Book> books= bookDAO.findAll();
+				model.addAttribute("books", books);
+				
+                        return "redirect:/books";
 			
 		}
 		}
