@@ -3,7 +3,10 @@
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
 	
 	<head>
-				<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+		
+		<meta charset="utf-8">
+		
+	    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
 
 		<title>Kitablar</title>
 		
@@ -43,6 +46,9 @@ $('#books-table').DataTable();
 	</head>
 	
 	<body>
+		
+		<div th:replace="menu :: menu"></div>
+
 		
 		<a th:href="@{/books/new}" id="new-book-button">Yeni Kitab</a>
 		
