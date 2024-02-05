@@ -16,13 +16,22 @@
 		
 		<div th:replace="menu :: menu"></div>
 		
-		<h1>Əsas Səhifəyə Xoş Gəlmisiniz</h1>
+		<div class="container">
+			
+		<h1>Kitab alış verişi saytımıza xoş gəlmisiniz</h1>
 		
-		<a th:href="@{/books}">Kitabların siyahısı</a><br>
+		<a class="btn btn-outline-info" th:href="@{/books}">Kitabların siyahısı</a>
+				
+		<a class="btn btn-outline-success" th:href="@{/customer}">Kitab alış-verişinə başla</a>
 		
-		<a th:href="@{/logout}">Çıxış</a>
+		<a class="btn btn-outline-warning" th:href="@{/orders}">Sifarişlərim</a>
 
+		<a class="btn btn-outline-danger" th:href="@{/logout}">Çıxış</a>
 		
+        </div>
+		
+		
+
 	</body>
 	
 </html>

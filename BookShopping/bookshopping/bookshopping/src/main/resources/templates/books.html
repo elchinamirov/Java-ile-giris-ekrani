@@ -14,19 +14,14 @@
 			
 			    table,th,td{border: 1px solid black;}
 				
-				table{border-collapse: collapse ; width: 100%;}
+				#books-table{border-collapse: collapse ; width: 100%;}
 				
 				th{padding: 5px;background-color:tan ;}
 				
 				td{padding: 5px;background-color:antiquewhite ;}
 
-                td:hover{ font-weight:bold; color:  sienna;cursor: pointer ;}
-		        
-		        #new-book-button{display: block; padding: 5px 10px;
-		        background-color: rgb(165, 144, 139); width: 75px; text-align: center; border-radius: 10px ;text-decoration: none;}
-		        #new-book-button:hover{background-color: rgb(128, 128, 64); cursor: pointer; }
-		        
-		         
+                td:hover{color:  sienna;cursor: pointer ;}
+		            
 		</style>
 		
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
@@ -48,13 +43,32 @@ $('#books-table').DataTable();});
 		
 		<div th:replace="menu :: menu"></div>
 
-		<a th:href="@{/books/new}" id="new-book-button">Yeni Kitab</a>
+		<div class="container-fluid">
+
+		<a style=" margin-top: 10px; margin-right: 10px;" class="btn btn-outline-success" th:href="@{/books/new}">Yeni Kitab</a>
 		
-		<a th:href="@{/home}">Əsas səhifə</a>
+		<a style="margin-top: 10px;" class="btn btn-outline-primary" th:href="@{/home}">Əsas səhifə</a>
+
+        <div style="height: 10px;"></div>
 
 		<table id="books-table">
 			
-		<thead>  <tr>  <th>ID</th> <th>Ad</th> <th>Təsvir</th> <th>Qiymət</th> <th>Müəllif</th> <th>Səhifə sayı</th> <th>Şəkil</th> <th>Əməliyyat</th> </tr>  </thead>
+		<thead>
+			 
+		   <tr> 
+			   
+			 <th>ID</th>
+			 <th>Ad</th> 
+			 <th>Təsvir</th> 
+			 <th>Qiymət</th> 
+			 <th>Müəllif</th> 
+			 <th>Səhifə sayı</th> 
+			 <th>Şəkil</th> 
+			 <th>Əməliyyat</th> 
+			 
+			</tr> 
+			 
+		</thead>
 			
 		<tbody>
 				
@@ -74,15 +88,19 @@ $('#books-table').DataTable();});
                     
                     <td th:text="${book.image}"></td>
 
-                    <td ><a th:href="@{/books/delete/{id}(id=${book.id})}" class="btn btn-danger" 
-                    onclick="if(!(confirm('Kitabı silməyə əminsiniz?'))) return false">Sil</a>
-                    <a th:href="@{/books/edit/{id}(id=${book.id})}" class="btn btn-primary">Redaktə</a></td>
+                    <td >
+						<a style="margin-right: 10px;" th:href="@{/books/delete/{id}(id=${book.id})}" class="btn btn-danger" 
+                         onclick="if(!(confirm('Kitabı silməyə əminsiniz?'))) return false">Sil</a>
+                    
+                        <a th:href="@{/books/edit/{id}(id=${book.id})}" class="btn btn-warning">Redaktə</a>
+                    </td>
                      
 			 </tr>
 				
 			</tbody>
 			
-		</table>
+		</table></div>
+		
 		
 	</body>
 	
