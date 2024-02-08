@@ -1,5 +1,8 @@
 package az.developia.bookshopping.config;
 
+
+/*
+
 import javax.sql.DataSource;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -34,4 +37,4 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
 		 } 
 		 
 	
-}
+}*/
