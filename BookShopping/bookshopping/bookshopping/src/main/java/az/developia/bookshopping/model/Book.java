@@ -20,8 +20,8 @@ public class Book {
 	private Integer id;
 	
 	@NotEmpty(message="Boş qoymaq olmaz")
-	@Size(min=2,max=50,message = "Ən azı 2 simvol yazmaq lazımdır")
-	@Size(max=50,message ="Ən çoxu 50 simvol yazmaq lazımdır")
+	@Size(min=2 , message = "Ən azı 2 simvol yazmaq lazımdır")
+	@Size(max=50, message = "Ən çoxu 50 simvol yazmaq lazımdır")
 	@Column(columnDefinition = "VARCHAR(50)")
 	private String name;
 	
@@ -33,9 +33,16 @@ public class Book {
 	@Max(value = 1000,message = "Ən çoxu 1000 yazmaq olar")
 	@NotNull(message = "Boş qoymaq olmaz")
 	private Double price;
+	
+	@Column(columnDefinition = "VARCHAR(50)")
+	@Size(min=2 , message = "Ən azı 2 simvol yazmaq lazımdır")
+	@Size(max=50, message = "Ən çoxu 50 simvol yazmaq lazımdır")
 	private String author;
+	
 	private Integer pageCount;
+	
 	private String image;
+	
 	private String username;
 
 
