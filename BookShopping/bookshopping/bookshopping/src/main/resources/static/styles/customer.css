@@ -1,5 +1,5 @@
-#main-content{border:3px solid black;overflow: auto;padding: 10px;}
-			.book-container{box-sizing: border-box; padding: 10px; width: 100%; float: left;}
+#main-content{overflow: auto;padding: 10px;}
+			.book-container{box-sizing: border-box; padding: 10px; width: 100%; float: left;background-color: white;}
 			
 			@Media screen and (min-width: 300px){
 			.book-container{width: 50%;}
