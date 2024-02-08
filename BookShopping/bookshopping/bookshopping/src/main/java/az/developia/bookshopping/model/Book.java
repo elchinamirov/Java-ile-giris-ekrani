@@ -1,5 +1,6 @@
 package az.developia.bookshopping.model;
 
+import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
@@ -17,7 +18,11 @@ public class Book {
 	@NotEmpty(message="Boş qoymaq olmaz")
 	@Size(min=2,max=50,message = "Ən azı 2 simvol yazmaq lazımdır")
 	@Size(max=50,message ="Ən çoxu 50 simvol yazmaq lazımdır")
+	@Column(columnDefinition = "VARCHAR(50)")
 	private String name;
+	@Column(columnDefinition = "VARCHAR(300)")
+	@Size(max=300,message ="Ən çoxu 300 simvol yazmaq lazımdır")
+
 	private String description;
 	private Double price;
 	private String author;
