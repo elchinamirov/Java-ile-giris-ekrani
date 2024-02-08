@@ -5,6 +5,7 @@ import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.validation.constraints.NotEmpty;
+import jakarta.validation.constraints.Size;
 
 @Entity
 public class Book {
@@ -14,6 +15,8 @@ public class Book {
 	
 	private Integer id;
 	@NotEmpty(message="Boş qoymaq olmaz")
+	@Size(min=2,max=50,message = "Ən azı 2 simvol yazmaq lazımdır")
+	@Size(max=50,message ="Ən çoxu 50 simvol yazmaq lazımdır")
 	private String name;
 	private String description;
 	private Double price;
