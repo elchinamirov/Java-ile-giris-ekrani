@@ -20,15 +20,14 @@ import ch.qos.logback.core.joran.conditional.IfAction;
 @Controller
 public class CustomerController {
 
-		
+	@Autowired
+	private BookDAO bookDAO;	
+	
 		@GetMapping(path = "/customer")
 		public String showCustomerPage (Model model) {
-			ArrayList<String> books=new ArrayList<>();
-			for (int i = 1; i <=100; i++) {
-				books.add("");
-			}
+			List<Book> books=bookDAO.findAll();
 			model.addAttribute("books", books);
-                        return "customer";
+            return "customer";
 			
 		}
 		
