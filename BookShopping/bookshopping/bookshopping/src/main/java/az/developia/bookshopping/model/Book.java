@@ -39,6 +39,8 @@ public class Book {
 	@Size(max=50, message = "Ən çoxu 50 simvol yazmaq lazımdır")
 	private String author;
 	
+	@Min(value = 0,message = "Ən azı 0 yazmaq olar")
+	@Max(value = 100000,message = "Ən çoxu 100000 yazmaq olar")
 	private Integer pageCount;
 	
 	private String image;
