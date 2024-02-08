@@ -4,6 +4,7 @@ import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
+import jakarta.validation.constraints.NotEmpty;
 
 @Entity
 public class Book {
@@ -12,6 +13,7 @@ public class Book {
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	
 	private Integer id;
+	@NotEmpty(message="Boş qoymaq olmaz")
 	private String name;
 	private String description;
 	private Double price;

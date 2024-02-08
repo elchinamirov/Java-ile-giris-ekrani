@@ -10,7 +10,9 @@
 		
 		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
 
-<style>#book-register-form{width: 300px; margin: auto}</style>
+<style>#book-register-form{width: 300px; margin: auto;}
+	.error-message{color: red;}
+</style>
 
 </head>
 	
@@ -27,7 +29,9 @@
 		<input type="hidden" th:field="*{id}"/>
 		
 		<div class="form-group"><label for="book-name">Ad: </label>	
-		<input class="form-control" id="book-name" th:field="*{name}"/></div>
+		<input class="form-control" id="book-name" th:field="*{name}"/>
+		<span class="error-message" th:if="${#fields.hasErrors('name')}" th:errors="*{name}"></span>
+		</div>
 		
 		<div class="form-group"><label for="book-description">Təsvir: </label>	
 		<textarea class="form-control" id="book-description" th:field="*{description}"></textarea></div>
