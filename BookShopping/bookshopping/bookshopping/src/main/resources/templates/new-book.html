@@ -39,7 +39,9 @@
         </div>
 		
 		<div class="form-group"><label for="book-price">Qiymət: </label>	
-		<input class="form-control" type="number" th:field="*{price}"/></div>
+		<input class="form-control" type="number" th:field="*{price}"/>
+		<span class="error-message" th:if="${#fields.hasErrors('price')}" th:errors="*{price}"></span>
+		</div>
 
 		<div class="form-group"><label for="book-author">Müəllif: </label>	
 		<input class="form-control" id="book-author" th:field="*{author}"/></div>
