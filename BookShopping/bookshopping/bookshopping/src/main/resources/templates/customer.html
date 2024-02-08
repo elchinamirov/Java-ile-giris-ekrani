@@ -27,10 +27,10 @@
 						<img th:src="@{/images/java.jpg}"/>
 					</span>
 					
-					<span class="book-name" th:text="${book.name}"></span>
+					<span class="book-name" th:text="${book.name}" th:title="${book.name}"></span>
 					<span class="book-price" th:text="${book.price}"></span>
-					<span class="book-description" th:text="${book.description}"></span>
-					<span class="book-author" th:text="${book.author}"></span>
+					<span class="book-description" th:text="${book.description}" th:title="${book.description}"></span>
+					<span class="book-author" th:text="${book.author}" th:title="${book.author}"></span>
 					<span class="book-page-count" th:text="${book.pageCount}"></span>
 					<div class="add-to-basket"><button class="add-to-basket-btn btn btn-primary";>Səbətə at</button></div>
 

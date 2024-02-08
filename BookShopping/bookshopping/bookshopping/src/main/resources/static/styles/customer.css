@@ -20,13 +20,23 @@
 			.book-container{width: 14.28%;}
 			}
 			
-		.book{box-sizing: border-box;border: 3px solid rgb(128, 0, 0); padding: 10px; border-radius:7px ;}
+		.book{box-sizing: border-box;border: 3px solid rgb(128, 0, 0); padding: 10px; border-radius:7px;}
+		
 		.book-image{display: block; width: 100%; background-color: rgb(128, 128, 192);}
-		.book-name,book-price,.book-description,.book-page-count{display:block ;}
+		
+		.book-name,book-price,.book-description,.book-page-count{
+			display:block;white-space: nowrap;overflow: hidden;text-overflow: ellipsis;}
+		
 		.book-name::before{content:'Ad: ';}
+		
 		.book-price::before{content:'Qiymət: ';}
+		
 		.book-description::before{content:'Təsvir: ';}
+		
 		.book-author::before{content:'Müəllif: ';}
+		
 		.book-page-count::before{content:'Səhifə sayı: ';}
+		
 		.add-to-basket{text-align: center;margin-top: 5px;}
+		
 		.book-image>img{width: 100%;}
