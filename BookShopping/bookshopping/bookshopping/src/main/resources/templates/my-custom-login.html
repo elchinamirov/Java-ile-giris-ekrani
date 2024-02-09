@@ -3,9 +3,8 @@
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
 	
 	<head>
-		
-				
-		<title>Hesaba daxil olmaq </title>
+			
+	<title>Hesaba daxil olmaq </title>
 		
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -20,18 +19,16 @@
 		
 		<div th:replace="menu :: menu"></div>
 		
-		<div style="width: 300px;margin:auto;">
+		<div style="width: 300px;margin: auto;">
 			
-		<form th:action="@{/authenticate-user" method="POST">
+		<form th:action="@{/authenticate-user}" method="POST" class="form">
 			
-<div th:if="${param.error}"
-class="alert alert-danger alert-dismissible">
+<div th:if="${param.error}" class="alert alert-danger alert-dismissible">
 <button type="button" class="close" data-dismiss="alert">&times;</button>
 Məlumatları səhv daxil etdiniz
 </div>			
 
-<div th:if="${param.logout}"
-class="alert alert-success alert-dismissible">
+<div th:if="${param.logout}" class="alert alert-success alert-dismissible">
 <button type="button" class="close" data-dismiss="alert">&times;</button>
 Hesabınızdan uğurla çıxdınız
 </div>
@@ -43,7 +40,7 @@ Hesabınızdan uğurla çıxdınız
 		    
 		    <div class="form-group">
 			    <label for="password">Şifrə</label>
-			    <input class="form-control" type="text" id="password" name="password" placeholder="Şifrə" />
+			    <input class="form-control" type="password" id="password" name="password" placeholder="Şifrə" />
 		    </div>
 		    
 		    <button class="btn btn-success" type="submit">Giriş</button>
