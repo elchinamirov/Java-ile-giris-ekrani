@@ -13,6 +13,7 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 
+import az.developia.bookshopping.config.MySession;
 import az.developia.bookshopping.dao.BookDAO;
 import az.developia.bookshopping.model.Book;
 
@@ -22,6 +23,11 @@ public class BookController {
 
 		@Autowired
 		private BookDAO bookDAO;
+		
+		@Autowired
+		private MySession mySession;
+		
+			
 		
 		@GetMapping(path = "/books")
 		public String showBooks (Model model) {
@@ -45,19 +51,16 @@ public class BookController {
 		@PostMapping(path = "/books/new-book-process")
 		public String saveBook(@Valid @ModelAttribute(name="book") Book book,
 				BindingResult result ,Model model) {
-			if (result.hasErrors()) {
+			    if (result.hasErrors()) {
 				return "new-book";
 				
 			}
 			
 			book.setImage("book.jpg");
+			book.setUsername(mySession.getUsername());
             bookDAO.save(book);
-			book.setUsername("elchin");
-
-            
 			List<Book> books= bookDAO.findAll();
 			model.addAttribute("books", books);
-			
 			return "redirect:/books";
 			
 		}

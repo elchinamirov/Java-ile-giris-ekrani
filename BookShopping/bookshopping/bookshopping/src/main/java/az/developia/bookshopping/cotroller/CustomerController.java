@@ -12,6 +12,7 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 
+import az.developia.bookshopping.config.MySession;
 import az.developia.bookshopping.dao.BookDAO;
 import az.developia.bookshopping.model.Book;
 import ch.qos.logback.core.joran.conditional.IfAction;
@@ -23,10 +24,15 @@ public class CustomerController {
 	@Autowired
 	private BookDAO bookDAO;	
 	
+	
+	@Autowired
+	private MySession mySession;
+	
 		@GetMapping(path = "/customer")
 		public String showCustomerPage (Model model) {
 			List<Book> books=bookDAO.findAll();
 			model.addAttribute("books", books);
+			System.out.println(mySession.getUsername());
             return "customer";
 			
 		}
