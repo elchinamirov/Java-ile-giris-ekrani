@@ -13,9 +13,14 @@ import az.developia.bookshopping.model.User;
 
 @Controller
 public class UserController {
+	private boolean userCreated=false;
 	
 	@GetMapping(path = {"/show-login"})
-	public String showLoginPage() {
+	public String showLoginPage(Model model) {
+		if (userCreated) {
+				model.addAttribute("userCreated", "");
+				userCreated=false;
+		}
 		return "my-custom-login";
 	}
 	@GetMapping(path = {"/create-account"})
@@ -31,7 +36,8 @@ public class UserController {
 			return "create-account";
 		}
 		System.out.println(user);
-		return "redirect:/show-user";
+        userCreated=true;
+return "my-custom-login";
 		
 	}
 	
