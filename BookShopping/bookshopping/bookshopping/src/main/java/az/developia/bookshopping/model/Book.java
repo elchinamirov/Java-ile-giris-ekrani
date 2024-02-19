@@ -16,7 +16,6 @@ public class Book {
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	
 	private Integer id;
 	
 	@NotEmpty(message="Boş qoymaq olmaz")

@@ -54,9 +54,7 @@ public class BookController {
 				BindingResult result ,Model model) {
 			    if (result.hasErrors()) {
 				return "new-book";
-				
 			}
-			
 			book.setImage("book.jpg");
 			book.setUsername(mySession.getUsername());
             bookDAO.save(book);

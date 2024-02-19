@@ -28,6 +28,8 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
 		protected void configure(HttpSecurity http) throws Exception {
 			http.csrf().disable().authorizeRequests()
 			.antMatchers(HttpMethod.GET, "/").permitAll()
+			.antMatchers(HttpMethod.GET, "/create-account").permitAll()
+			.antMatchers(HttpMethod.POST, "/create-account-process").permitAll()
 			.anyRequest().authenticated().and()
 			.formLogin().loginPage("/show-login")
 			.loginProcessingUrl("/authenticate-user").permitAll()
