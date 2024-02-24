@@ -21,7 +21,8 @@
 				td{padding: 5px;background-color:antiquewhite ;}
 
                 td:hover{color:  sienna;cursor: pointer ;}
-		            
+		        
+		        #username{display: inline-block;font-size: 20px;font-weight: bold;margin:0;}    
 		</style>
 		
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
@@ -47,7 +48,8 @@ $('#books-table').DataTable();});
 
 		<a style=" margin-top: 10px; margin-right: 10px;" class="btn btn-outline-success" th:href="@{/books/new}">Yeni Kitab</a>
 		
-		<a style="margin-top: 10px;" class="btn btn-outline-primary" th:href="@{/home}">Əsas səhifə</a>
+		<a style="margin-top: 10px;" class="btn btn-outline-primary" th:href="@{/home}">Əsas səhifə</a> 
+		<span id="username" th:text="${username}"></span>
 
         <div style="height: 10px;"></div>
 
