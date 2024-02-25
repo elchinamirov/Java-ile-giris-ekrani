@@ -44,7 +44,36 @@
 			
 		</div>
 
+		<script>
+			var xht = new XMLHttpRequest();
+			xht.onreadystatechange = function(){
+			if(this.readyState == 4 && this.status == 200){
+			var responseJSON=this.responseText;
+			var booksArray=JSON.parse(responseJSON);	
+			console.log(booksArray);	
+
+			}
+			};
+			xht.open("GET","/rest/books",true);
+			xht.send();
+		</script>
 		
 	</body>
 	
+	
 </html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
