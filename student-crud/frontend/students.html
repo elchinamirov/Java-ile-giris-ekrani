@@ -13,95 +13,105 @@
 
 <body>
     <div style="width: 30%; margin: auto;">
-    <form onsubmit="onSaveStudent(event)">
-        <div class="form-group">
-            <label for="student-name">Ad</label>
-            <input id="student-name" class="form-control">
-        </div>
+        <form onsubmit="onSaveStudent(event)">
+            <div class="form-group">
+                <label for="student-name">Ad</label>
+                <input id="student-name" class="form-control">
+            </div>
 
-        <div class="form-group">
-            <label for="student-surname">Soyad</label>
-            <input id="student-surname" class="form-control">
-        </div>
-        <input type="submit" value="Yadda saxla" class="btn btn-success">
+            <div class="form-group">
+                <label for="student-surname">Soyad</label>
+                <input id="student-surname" class="form-control">
+            </div>
+            <input type="submit" value="Yadda saxla" class="btn btn-success">
 
-    </form>
+        </form>
     </div>
 
-<hr>
-<div class="container">
-    <table class="table table-bordered">
+    <hr>
+    <div class="container">
+        <table class="table table-bordered">
 
-        <thead>
-            <tr>
-                <th>Kod</th>
-                <th>Ad</th>
-                <th>Soyad</th>
-                <td></td>
-            </tr>
-        </thead>
-        
-        <tbody id="students-tbody">
-        
-        </tbody>
-</div>
+            <thead>
+                <tr>
+                    <th>Kod</th>
+                    <th>Ad</th>
+                    <th>Soyad</th>
+                    <td></td>
+                </tr>
+            </thead>
 
-<script>
-    function onSaveStudent(event){
-        event.preventDefault();
-        var studentName=document.getElementById('student-name').value;
-        var studentSurname=document.getElementById('student-surname').value;
+            <tbody id="students-tbody">
 
-        var studentObject={};
-        studentObject.name=studentName;
-        studentObject.surname=studentSurname;
+            </tbody>
+    </div>
 
-        var http=new XMLHttpRequest();
+    <script>
+        function onSaveStudent(event) {
+            event.preventDefault();
+            var studentName = document.getElementById('student-name').value;
+            var studentSurname = document.getElementById('student-surname').value;
 
-        http.onload=function(){
+            var studentObject = {};
+            studentObject.name = studentName;
+            studentObject.surname = studentSurname;
+
+            var http = new XMLHttpRequest();
+
+            http.onload = function () {
+                loadAllStudents();
+            }
+            http.open("POST", "http://localhost:8585/students", true);
+            http.setRequestHeader("Content-Type", "application/json");
+            http.send(JSON.stringify(studentObject));
+        }
+
+        function loadAllStudents() {
+
+            var http = new XMLHttpRequest();
+
+            http.onload = function () {
+                var response = this.responseText;
+                var studentsArray = JSON.parse(response);
+                fillStudentsTable(studentsArray);
+            }
+            http.open("GET", "http://localhost:8585/students", true);
+            http.send();
+        }
+
+        function fillStudentsTable(students) {
+
+            var studentsTbodyElement = document.getElementById('students-tbody');
+
+            var studentsTbodyHtml = "";
+            for (var i = 0; i < students.length; i++) {
+                var student = students[i];
+                studentsTbodyHtml += "<tr><td>" + student.id + "</td>";
+                studentsTbodyHtml += "<td>" + student.name + "</td>";
+                studentsTbodyHtml += "<td>" + student.surname + "</td>";
+
+                studentsTbodyHtml += "<td><button class='btn btn-danger' onclick='onDeleteStudent("
+                    + student.id + ")' >Sil</button> ";
+                studentsTbodyHtml += "<button class='btn btn-primary'>Redaktə</button></td></tr>";
+            }
+            studentsTbodyElement.innerHTML = studentsTbodyHtml;
+
+        }
+        loadAllStudents();
+
+        function onDeleteStudent(studentId) {
+            if(confirm('Silməyə əminsiniz?')){
+
+            
+            var http = new XMLHttpRequest();
+            http.onload = function () {
             loadAllStudents();
+            }
+            http.open("DELETE", "http://localhost:8585/students/" + studentId, true);
+            http.send();
         }
-        http.open("POST","http://localhost:8585/students",true);
-        http.setRequestHeader("Content-Type","application/json");
-        http.send(JSON.stringify(studentObject)); 
- }
-
- function loadAllStudents(){
-
-    var http=new XMLHttpRequest();
-      
-        http.onload=function(){
-            var response=this.responseText;
-            var studentsArray=JSON.parse(response);
-            fillStudentsTable(studentsArray);
-        }
-        http.open("GET","http://localhost:8585/students",true);
-        http.send();
- }
- 
-    function fillStudentsTable(students){
-
-    var studentsTbodyElement=document.getElementById('students-tbody');
-
-    var studentsTbodyHtml="";
-    for(var  i=0;i<students.length;i++){
-    var student=students[i];
-    studentsTbodyHtml+="<tr><td>"+student.id+"</td>";
-    studentsTbodyHtml+="<td>"+student.name+"</td>";
-    studentsTbodyHtml+="<td>"+student.surname+"</td>";
-   
-    studentsTbodyHtml+="<td><button class='btn btn-danger'>Sil</button> ";
-    studentsTbodyHtml+="<button class='btn btn-primary'>Redaktə</button></td></tr>";
-
-
-}
-  
-    studentsTbodyElement.innerHTML=studentsTbodyHtml;
-
- }
- loadAllStudents();
-
-</script>
+    }
+    </script>
 
 </body>
 
