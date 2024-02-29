@@ -25,6 +25,7 @@ public class StudentController {
 
 	@PostMapping
 	public Student save(@RequestBody Student student) {
+
 		return studentRepository.save(student);
 	}
 	
@@ -32,11 +33,15 @@ public class StudentController {
 	public List<Student> findAlL(){
 		return studentRepository.findAll();
 		}
-		
-	
 	
 	@DeleteMapping(path = "/{id}")
 	public void deleteById(@PathVariable Integer id) {
 		studentRepository.deleteById(id);
 }
-}
+	
+	@GetMapping(path = "/{id}")
+	public Student findById(@PathVariable Integer id) {
+		return studentRepository.findById(id).get();
+	}
+	
+	}
