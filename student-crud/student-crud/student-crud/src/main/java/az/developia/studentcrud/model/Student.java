@@ -4,6 +4,7 @@ import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
+import jakarta.validation.constraints.NotEmpty;
 
 @Entity
 public class Student {
@@ -12,8 +13,10 @@ public class Student {
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 private Integer id;
 	
+	@NotEmpty(message = "Boş qoymaq olmaz")	
 private String name;
 
+	@NotEmpty(message = "Boş qoymaq olmaz")	
 private String surname;
 
 public Integer getId() {

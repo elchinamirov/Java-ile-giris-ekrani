@@ -20,9 +20,14 @@ function onSaveStudent(event) {
     var http = new XMLHttpRequest();
 
     http.onload = function () {
+        if(this.status==400){
+            alert(this.responseText);
+        }else{
         selectedStudentId = 0;
         setHeaderText('Yeni tələbə qeydiyyatı');
-        loadAllStudents();
+        loadAllStudents(); 
+        }
+        
     }
     http.open("POST", API_URL + "/students", true);
     http.setRequestHeader("Content-Type", "application/json");
@@ -90,4 +95,5 @@ function onEditStudent(studentId) {
 function setHeaderText(text) {
     headerTextElement.innerHTML = text;
 }
+
 setHeaderText('Yeni tələbə qeydiyyatı');
