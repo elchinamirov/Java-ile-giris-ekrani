@@ -56,6 +56,34 @@
             </tbody>
     </div>
 
+
+    <div class="modal fade" id="noteModal">
+        <div class="modal-dialog">
+          <div class="modal-content">
+            <div class="modal-header">
+              <h4 class="modal-title">Yeni qeyd</h4>
+              <button type="button" class="close" data-dismiss="modal">&times;</button>
+            </div>
+            <div class="modal-body">
+
+                <form onsubmit="onSaveStudentNote(event)">
+                    <div class="form-group">
+                        <label for="student-note">Qeyd</label>
+                        <input id="student-note" class="form-control">
+                    </div>
+                    <input type="submit" value="Yadda saxla" class="btn btn-success">
+                </form>
+
+
+            </div>        
+            <div class="modal-footer">
+              <button type="button" class="btn btn-danger" data-dismiss="modal">Bağla</button>
+            </div>     
+          </div>
+        </div>
+      </div>
+
+
     <script src="js/students.js"></script>
 </body>
 
