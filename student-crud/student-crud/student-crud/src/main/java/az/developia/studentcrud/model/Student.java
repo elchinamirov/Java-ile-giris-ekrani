@@ -5,6 +5,7 @@ import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.validation.constraints.NotEmpty;
+import jakarta.validation.constraints.Size;
 
 @Entity
 public class Student {
@@ -14,9 +15,13 @@ public class Student {
 private Integer id;
 	
 	@NotEmpty(message = "Boş qoymaq olmaz")	
+	@Size(min=2,message = "Minimum 2 simvol yazılmalıdır!")
+	@Size(max=30,message = "Maksimum 30 simvol yazılmalıdır!")
 private String name;
 
 	@NotEmpty(message = "Boş qoymaq olmaz")	
+	@Size(min=2,message = "Minimum 2 simvol yazılmalıdır!")
+	@Size(max=30,message = "Maksimum 30 simvol yazılmalıdır!")
 private String surname;
 
 public Integer getId() {

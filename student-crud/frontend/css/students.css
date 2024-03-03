@@ -1,3 +1,7 @@
 #header-text {
     color: green;
 }
+.error{
+ color: red;
+ font-weight: bold;   
+}

@@ -7,6 +7,9 @@ var studentSurnameInput = document.getElementById('student-surname')
 var studentsTbodyElement = document.getElementById('students-tbody');
 var headerTextElement = document.getElementById('header-text');
 
+var nameErrorElement=document.getElementById('name-error');
+var surnameErrorElement=document.getElementById('surname-error');
+
 function onSaveStudent(event) {
     event.preventDefault();
     var studentName = studentNameInput.value;
@@ -21,8 +24,27 @@ function onSaveStudent(event) {
 
     http.onload = function () {
         if(this.status==400){
-            alert(this.responseText);
+            var nameError="";
+            var surnameError="";
+
+            var errorObject=JSON.parse(this.responseText);
+            errorObject.validations.forEach(error => {
+                if(error.field=='name'){
+                   // document.getElementById('name-error').innerHTML=error.message;
+                nameError+=error.message+"<br>";
+                }
+                if(error.field=='surname'){
+                   // document.getElementById('surname-error').innerHTML=error.message;
+                surnameError+=error.message+"<br>";
+
+                }
+            });
+             nameErrorElement.innerHTML=nameError;
+             surnameErrorElement.innerHTML=surnameError;
+
         }else{
+
+        clearErrorMessages();
         selectedStudentId = 0;
         setHeaderText('Yeni tələbə qeydiyyatı');
         loadAllStudents(); 
@@ -97,3 +119,8 @@ function setHeaderText(text) {
 }
 
 setHeaderText('Yeni tələbə qeydiyyatı');
+
+function clearErrorMessages(){
+    nameErrorElement.innerHTML="";
+    surnameErrorElement.innerHTML="";
+}
