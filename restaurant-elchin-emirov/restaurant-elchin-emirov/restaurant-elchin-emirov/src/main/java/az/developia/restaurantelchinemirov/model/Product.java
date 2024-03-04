@@ -1,24 +1,22 @@
 package az.developia.restaurantelchinemirov.model;
 
 	import java.time.LocalDateTime;
-	import jakarta.persistence.Column;
 
-	import com.fasterxml.jackson.annotation.JsonFormat;
-	import jakarta.persistence.Entity;
-	import jakarta.persistence.GeneratedValue;
-	import jakarta.persistence.GenerationType;
-	import jakarta.persistence.Id;
-	import jakarta.persistence.Table;
-	@Entity
-	 @Table(name="products")
+import javax.persistence.Column;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+
+import com.fasterxml.jackson.annotation.JsonFormat;
+	@javax.persistence.Entity
+	@javax.persistence.Table(name="products")
 	public class Product {
 		 
-		@Id
-		 @GeneratedValue(strategy = GenerationType.IDENTITY)
+		@javax.persistence.Id
+		@GeneratedValue(strategy = GenerationType.IDENTITY)
 		
 		private Integer id;// db
 		private String name;// user
-		
+		private Integer quantity;
 		private Double price;// user
 		@Column(unique = true)
 
@@ -57,7 +55,14 @@ package az.developia.restaurantelchinemirov.model;
 		public void setRegister(LocalDateTime register) {
 			this.register = register;
 		}
-		public Product(Integer id, String name, Double price, String barcode, LocalDateTime register) {
+		
+		public Integer getQuantity() {
+			return quantity;
+		}
+		public void setQuantity(Integer quantity) {
+			this.quantity = quantity;
+		}
+		public Product(Integer id, String name,Integer quantity ,Double price, String barcode, LocalDateTime register) {
 			super();
 			System.out.println("ok");
 			this.id = id;
@@ -65,13 +70,15 @@ package az.developia.restaurantelchinemirov.model;
 			this.price = price;
 			this.barcode = barcode;
 			this.register = register;
+			this.quantity=quantity;
 		}
 		@Override
 		public String toString() {
-			return "Product [id=" + id + ", name=" + name + ", price=" + price + ", barcode=" + barcode
+			return "Product [id=" + id + ", name=" + name + ", quantity=" + quantity + ", price=" + price + ", barcode=" + barcode
 					+ ", register=" + register + "]";
 		
 		}
+	
 		public Product() {
 			// TODO Auto-generated constructor stub
 		}

@@ -1,79 +1,64 @@
 <!DOCTYPE html>
 
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
-	
-	<head>
-		
-		<meta charset="utf-8">
-				
-		<title>Alıcı</title>
-		
-		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
-        <link th:href="@{/styles/customer.css}" rel="stylesheet"/>
-        <style>
-			
-		</style>
-	</head>
-	
-	<body>
-		
-		<div th:replace="menu :: menu"></div>
-				
-		<div id="main content">
-			<div class="book-container" th:each="book : ${books}" >
-				<div class="book">
-					
-					<span class="book-image">
-						<img th:src="@{/images/java.jpg}"/>
-					</span>
-					
-					<span class="book-name" th:text="${book.name}" th:title="${book.name}"></span>
-					<span class="book-price" th:text="${book.price}"></span>
-					<span class="book-description" th:text="${book.description}" th:title="${book.description}"></span>
-					<span class="book-author" th:text="${book.author}" th:title="${book.author}"></span>
-					<span class="book-page-count" th:text="${book.pageCount}"></span>
-					<div class="add-to-basket"><button class="add-to-basket-btn btn btn-primary";>Səbətə at</button></div>
+
+<head>
+
+	<meta charset="utf-8">
+
+	<title>Alıcı</title>
+
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+	<link th:href="@{/styles/customer.css}" rel="stylesheet" />
+	<style>
+
+	</style>
+</head>
+
+<body>
+
+	<div th:replace="menu :: menu"></div>
+
+	<div id="main content">
+		<div class="book-container" th:each="book : ${books}">
+			<div class="book">
+
+				<span class="book-image">
+					<img th:src="@{/images/java.jpg}" />
+				</span>
+
+				<span class="book-name" th:text="${book.name}" th:title="${book.name}"></span>
+				<span class="book-price" th:text="${book.price}"></span>
+				<span class="book-description" th:text="${book.description}" th:title="${book.description}"></span>
+				<span class="book-author" th:text="${book.author}" th:title="${book.author}"></span>
+				<span class="book-page-count" th:text="${book.pageCount}"></span>
+				<div class="add-to-basket"><button class="add-to-basket-btn btn btn-primary" ;>Səbətə at</button></div>
 
 
-				</div>
 			</div>
-			
-			<button id="open-basket-btn" class="btn btn-warning">Səbət <span class="badge badge-light">4</span></button>
-			
-			<input id="search-input" class="form-control" placeholder="Axtarış"/>
-			
 		</div>
 
-		<script>
-			var xht = new XMLHttpRequest();
-			xht.onreadystatechange = function(){
-			if(this.readyState == 4 && this.status == 200){
-			var responseJSON=this.responseText;
-			var booksArray=JSON.parse(responseJSON);	
-			console.log(booksArray);	
+		<button id="open-basket-btn" class="btn btn-warning">Səbət <span class="badge badge-light">4</span></button>
+
+		<input id="search-input" class="form-control" placeholder="Axtarış" />
+
+	</div>
+
+	<script>
+		var xht = new XMLHttpRequest();
+		xht.onreadystatechange = function () {
+			if (this.readyState == 4 && this.status == 200) {
+				var responseJSON = this.responseText;
+				var booksArray = JSON.parse(responseJSON);
+				console.log(booksArray);
 
 			}
-			};
-			xht.open("GET","/rest/books",true);
-			xht.send();
-		</script>
-		
-	</body>
-	
-	
+		};
+		xht.open("GET", "/rest/books", true);
+		xht.send();
+	</script>
+
+</body>
+
+
 </html>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-

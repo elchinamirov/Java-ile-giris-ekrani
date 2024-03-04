@@ -24,7 +24,7 @@ import az.developia.restaurantelchinemirov.repository.ProductRepository;
 
 @RequestMapping(path = "/products")
 
-public class ProductController {
+public class ProductRestController {
 	
 	@Autowired
 	private ProductRepository productRepository;
