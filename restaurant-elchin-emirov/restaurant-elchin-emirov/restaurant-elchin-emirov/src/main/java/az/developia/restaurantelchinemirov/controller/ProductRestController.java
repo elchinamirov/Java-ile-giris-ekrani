@@ -15,10 +15,11 @@ import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
+
+import az.developia.restaurantelchinemirov.dao.ProductDAO;
 import az.developia.restaurantelchinemirov.exception.OurRuntimeException;
 
 import az.developia.restaurantelchinemirov.model.Product;
-import az.developia.restaurantelchinemirov.repository.ProductRepository;
 
 @RestController
 
@@ -27,7 +28,7 @@ import az.developia.restaurantelchinemirov.repository.ProductRepository;
 public class ProductRestController {
 	
 	@Autowired
-	private ProductRepository productRepository;
+	private ProductDAO productRepository;
 
 
 	@PostMapping
