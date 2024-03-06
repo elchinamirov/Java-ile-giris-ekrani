@@ -1,46 +1,54 @@
 package az.developia.libraryelchinemirov.entity;
 
-import java.time.LocalDate;
 
+import java.time.LocalDateTime;
 
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Table;
+
 @Entity
-@Table(name = "books")
+@Table(name="books")
 public class BookEntity {
+	
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	private Integer Id;
+	private Integer id;
+	
 	private String name;
-	private double price;
-	private LocalDate register;
+	
+	private Double price;
+	
+	private LocalDateTime register;
+	
+	public Integer getId() {
+		return id;
+	}
+	public void setId(Integer id) {
+		this.id = id;
+	}
+	
 	public String getName() {
 		return name;
 	}
 	public void setName(String name) {
 		this.name = name;
 	}
-	public double getPrice() {
+	public Double getPrice() {
 		return price;
 	}
-	public void setPrice(double price) {
+	public void setPrice(Double price) {
 		this.price = price;
 	}
-	public LocalDate getRegister() {
+	public LocalDateTime getRegister() {
 		return register;
 	}
-	public void setRegister(LocalDate register) {
+	public void setRegister(LocalDateTime register) {
 		this.register = register;
 	}
-	public int getId() {
-		return Id;
-	}
-	public void setId(int id) {
-		Id = id;
-	}
 	
-
+	
+	
 }

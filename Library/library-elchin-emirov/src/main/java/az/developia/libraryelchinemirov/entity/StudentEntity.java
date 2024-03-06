@@ -1,5 +1,6 @@
 package az.developia.libraryelchinemirov.entity;
 
+
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -14,7 +15,6 @@ public class StudentEntity {
 private Integer id;
 private String name;
 private String surname;
-
 
 public Integer getId() {
 	return id;

@@ -9,6 +9,8 @@ import az.developia.libraryelchinemirov.entity.UserEntity;
 @Transactional
 public interface UserDAO extends JpaRepository<UserEntity, String> {
 	@Query(value = "insert into authorities(username,authority) select ?1,auhtority_list where admin",nativeQuery = true)
-    @Modifying
+	//@Query(value = "insert into authorities(username,authority) select ?1,auhtority_list where admin=1",nativeQuery = true)
+
+	@Modifying
     void addAdminAuthorities(String username);
 }

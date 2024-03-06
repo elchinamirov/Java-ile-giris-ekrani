@@ -1,5 +1,6 @@
 package az.developia.libraryelchinemirov.service;
 
+
 import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -12,33 +13,33 @@ import az.developia.libraryelchinemirov.exception.OurRuntimeException;
 
 @Service
 public class BookService {
-	
-	private BookEntity student;
+
+	private BookEntity book;
 	@Autowired
 	private BookDAO bookDAO;
 
-	public void add(BookEntity s, BindingResult br) {
+	public void add(BookEntity b, BindingResult br) {
 
 		if (br.hasErrors()) {
 			throw new OurRuntimeException("Melumatlarin tamligi pozulub", br);
 
 		}
-		s.setId(s.getId());
-		s.setName(s.getName());
-		s.setRegister(s.getRegister());
-		bookDAO.save(s);
+		b.setId(b.getId());
+		b.setName(b.getName());
+		b.setRegister(b.getRegister());
+		bookDAO.save(b);
 	}
 
-	public void update(BookEntity s) {
-		Optional<BookEntity> bookOptional =bookDAO.findById(s.getId());
+	public void update(BookEntity b) {
+		Optional<BookEntity> bookOptional =bookDAO.findById(b.getId());
 		boolean bookExists = bookOptional.isPresent();
-		BookEntity s1 = null;
+		BookEntity b1 = null;
 		if (bookExists) {
-			s1 = bookOptional.get();
-			s1.setId(s1.getId());
-			s1.setName(s1.getName());
-			s1.setRegister(s1.getRegister());
-			bookDAO.save(s1);
+			b1 = bookOptional.get();
+			b1.setId(b1.getId());
+			b1.setName(b1.getName());
+			b1.setRegister(b1.getRegister());
+			bookDAO.save(b1);
 		} else {
 			throw new OurRuntimeException("Kitab tapilmadi", null);
 		}

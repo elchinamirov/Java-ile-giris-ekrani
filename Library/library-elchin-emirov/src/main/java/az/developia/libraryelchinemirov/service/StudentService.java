@@ -1,5 +1,8 @@
 package az.developia.libraryelchinemirov.service;
 
+
+
+
 import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -9,6 +12,8 @@ import org.springframework.validation.BindingResult;
 import az.developia.libraryelchinemirov.dao.StudentDAO;
 import az.developia.libraryelchinemirov.entity.StudentEntity;
 import az.developia.libraryelchinemirov.exception.OurRuntimeException;
+
+
 
 @Service
 public class StudentService {
@@ -35,8 +40,8 @@ public class StudentService {
 		StudentEntity s1 = null;
 		if (studentExists) {
 			s1 = studentOptional.get();
-			s1.setId(s1.getId());
-			s1.setName(s1.getName());
+			s1.setId(s.getId());
+			s1.setName(s.getName());
 			s1.setSurname(s.getSurname());
 			studentDAO.save(s1);
 		} else {

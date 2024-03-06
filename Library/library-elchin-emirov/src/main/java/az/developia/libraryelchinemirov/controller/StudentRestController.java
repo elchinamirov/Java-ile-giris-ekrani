@@ -1,5 +1,6 @@
 package az.developia.libraryelchinemirov.controller;
 
+
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -19,6 +20,8 @@ import az.developia.libraryelchinemirov.dao.StudentDAO;
 import az.developia.libraryelchinemirov.entity.StudentEntity;
 import az.developia.libraryelchinemirov.exception.OurRuntimeException;
 import az.developia.libraryelchinemirov.service.StudentService;
+
+
 
 @RestController
 @RequestMapping(path = "/students")
@@ -45,14 +48,14 @@ public class StudentRestController {
 
 	@PostMapping
 	@PreAuthorize(value = "hasAuthority('ROLE_ADD_STUDENT')")
-	public ResponseEntity<StudentEntity> createProduct(@RequestBody StudentEntity s) {
+	public ResponseEntity<StudentEntity> createStudent(@RequestBody StudentEntity s) {
 		StudentEntity savedStudent = studentDAO.save(s);
 		return ResponseEntity.ok(savedStudent);
 
 	}
 
 	@PutMapping
-	@PreAuthorize(value = "hasAuthority('ROLE_UPDATE_PRODUCT')")
+	@PreAuthorize(value = "hasAuthority('ROLE_UPDATE_STUDENT')")
 
 	public void update(@javax.validation.Valid @RequestBody StudentEntity s) {
 		studentService.update(s);
