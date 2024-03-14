@@ -1,7 +1,5 @@
 package az.developia.libraryelchinemirov.entity;
 
-import java.awt.print.Book;
-
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -10,44 +8,48 @@ import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
-	@Entity
-	@Table(name = "borrowed_books")
-	public class Borrowed {
+@Entity
+@Table(name = "borrowed_books")
+public class Borrowed {
 
-		    @Id
-		    @GeneratedValue(strategy = GenerationType.IDENTITY)
-		    private Integer id;
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Long id;
 
-		    @ManyToOne
-		    @JoinColumn(name = "student_id", referencedColumnName = "id")
-		    private StudentEntity studentid;
+    @ManyToOne
+    @JoinColumn(name = "student_id", referencedColumnName = "id")
+    private StudentEntity student;
 
-		    @ManyToOne
-		    @JoinColumn(name = "book_id", referencedColumnName = "book_id")
-		    private BookEntity book;
+    @ManyToOne
+    @JoinColumn(name = "book_id", referencedColumnName = "book_id")
+    private BookEntity book;
 
-			public Integer getId() {
-				return id;
-			}
+  
 
-			public void setId(Integer id) {
-				this.id = id;
-			}
-
-			public StudentEntity getStudentid() {
-				return studentid;
-			}
-
-			public void setStudentid(StudentEntity studentid) {
-				this.studentid = studentid;
-			}
-
-			public BookEntity getBook() {
-				return book;
-			}
-
-			public void setBook(BookEntity book) {
-				this.book = book;
-			}
-
+	public Long getId() {
+		return id;
 	}
+
+	public void setId(Long id) {
+		this.id = id;
+	}
+
+	public StudentEntity getStudent() {
+		return student;
+	}
+
+	public void setStudent(StudentEntity student) {
+		this.student = student;
+	}
+
+	public BookEntity getBook() {
+		return book;
+	}
+
+	public void setBook(BookEntity book) {
+		this.book = book;
+	}
+
+	
+    
+}
