@@ -8,7 +8,7 @@ import az.developia.libraryelchinemirov.entity.Borrowed;
 import az.developia.libraryelchinemirov.entity.StudentEntity;
 
 public interface BorrowedBookDAO extends JpaRepository<Borrowed, Integer>{
-List<Borrowed> findByStudent(StudentEntity student);
-List<Borrowed> findByStudentid(StudentEntity student);
+List<Borrowed> findByStudent(StudentEntity studentid);
+List<Borrowed> findByStudentid(StudentEntity studentid);
 
 }

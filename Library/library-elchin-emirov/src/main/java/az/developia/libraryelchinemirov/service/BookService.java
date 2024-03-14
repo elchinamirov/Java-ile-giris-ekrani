@@ -26,7 +26,7 @@ public class BookService {
 		}
 		b.setId(b.getId());
 		b.setName(b.getName());
-		b.setRegister(b.getRegister());
+		b.setPublicationDate(b.getPublicationDate());
 		bookDAO.save(b);
 	}
 
@@ -38,16 +38,12 @@ public class BookService {
 			b1 = bookOptional.get();
 			b1.setId(b1.getId());
 			b1.setName(b1.getName());
-			b1.setRegister(b1.getRegister());
+			b1.setPublicationDate(b1.getPublicationDate());
 			bookDAO.save(b1);
 		} else {
 			throw new OurRuntimeException("Kitab tapilmadi", null);
 		}
-
-	
-		
 }
-	
 	public String DeleteBook(Integer id) {
 		bookDAO.deleteById(id);
 		return "deleted" + id;

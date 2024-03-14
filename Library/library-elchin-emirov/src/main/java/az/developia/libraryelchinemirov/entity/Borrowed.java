@@ -20,11 +20,11 @@ import javax.persistence.Table;
 
 		    @ManyToOne
 		    @JoinColumn(name = "student_id", referencedColumnName = "id")
-		    private StudentEntity student;
+		    private StudentEntity studentid;
 
 		    @ManyToOne
 		    @JoinColumn(name = "book_id", referencedColumnName = "book_id")
-		    private Book book;
+		    private BookEntity book;
 
 			public Integer getId() {
 				return id;
@@ -34,20 +34,20 @@ import javax.persistence.Table;
 				this.id = id;
 			}
 
-			public StudentEntity getStudent() {
-				return student;
+			public StudentEntity getStudentid() {
+				return studentid;
 			}
 
-			public void setStudent(StudentEntity student) {
-				this.student = student;
+			public void setStudentid(StudentEntity studentid) {
+				this.studentid = studentid;
 			}
 
-			public Book getBook() {
+			public BookEntity getBook() {
 				return book;
 			}
 
-			public void setBook(Book book) {
+			public void setBook(BookEntity book) {
 				this.book = book;
 			}
 
-}
+	}

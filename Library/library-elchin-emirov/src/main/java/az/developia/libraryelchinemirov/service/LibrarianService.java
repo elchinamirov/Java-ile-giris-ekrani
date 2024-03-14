@@ -62,14 +62,14 @@ public class LibrarianService {
 
 	        
 	        if (book.isAvailableForBorrowing()) {
-	           book.setBorrowed_Date(LocalDateTime.now());
-	            book.setAvailable_For_Borrowing(false);
+	           book.setBorrowedDate(LocalDateTime.now());
+	            book.setAvailableForBorrowing(false);
 	            
 	            bookDAO.save(book);
 
 	           
 	            Borrowed borrowed = new Borrowed();
-	            borrowed.setStudent(student);
+	            borrowed.setStudentid(student);
 	            borrowed.setBook(book);
 	            borrowedBookDAO.save(borrowed);
 	        } else {

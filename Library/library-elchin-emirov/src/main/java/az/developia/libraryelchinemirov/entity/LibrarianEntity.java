@@ -8,19 +8,26 @@ import javax.persistence.Table;
 @Table(name = "librarians")
 public class LibrarianEntity {
 @Id
-	private String name;
-	private String surname;
-	public String getName() {
-		return name;
+	private Integer id;
+	private String username;
+	private String password;
+	
+	public Integer getId() {
+		return id;
 	}
-	public void setName(String name) {
-		this.name = name;
+	public void setId(Integer id) {
+		this.id = id;
 	}
-	public String getSurname() {
-		return surname;
+	public String getUsername() {
+		return username;
 	}
-	public void setSurname(String surname) {
-		this.surname = surname;
+	public void setUsername(String username) {
+		this.username = username;
 	}
-
-}
+	public String getPassword() {
+		return password;
+	}
+	public void setPassword(String password) {
+		this.password = password;
+	}}
+	
