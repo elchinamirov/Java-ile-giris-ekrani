@@ -1,9 +1,10 @@
 package az.developia.libraryelchinemirov.controller;
- 
+
 import javax.validation.Valid;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -15,23 +16,27 @@ import az.developia.libraryelchinemirov.entity.LibrarianEntity;
 import az.developia.libraryelchinemirov.service.LibrarianService;
 
 @RestController
-@RequestMapping("/librarian") 
+@RequestMapping("/librarian")
+@CrossOrigin(origins = "*")
 public class LibrarianRestController {
 	@Autowired
-	private LibrarianService librarianService;
+	private  LibrarianService librarianService;
 	
-	
-
-	@PostMapping("/register/librarian")
+	@PostMapping("/register/librarian")			
+	@PreAuthorize(value = "hasAuthority('ROLE_LIBRARIAN')")	
+	//kitabxanaci register etmek 
     public void registerLibrarian(@Valid @RequestBody LibrarianEntity librarian) {
         librarianService.registerLibrarian(librarian);
     }
-
-	@PostMapping("/borrow-Book") 
-    public ResponseEntity<String> borrow_Book(@RequestParam Integer studentId, @RequestParam Integer bookId) {
+	
+	@PostMapping("/giveBook")
+	@PreAuthorize(value = "hasAuthority('ROLE_LIBRARIAN')")	
+    public ResponseEntity<String> giveBook(@RequestParam Long studentId, @RequestParam Long bookId) {	//sagirde kitab vermek 
       
-            librarianService.borrowBook(studentId, bookId);
+            librarianService.giveBook(studentId, bookId);
             return ResponseEntity.ok("Kitab ugurla verildi");
+     
+    }
 
-}
+   
 }

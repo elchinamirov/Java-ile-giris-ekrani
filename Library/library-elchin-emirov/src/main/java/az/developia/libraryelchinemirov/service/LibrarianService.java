@@ -19,69 +19,73 @@ import az.developia.libraryelchinemirov.entity.StudentEntity;
 import az.developia.libraryelchinemirov.entity.UserEntity;
 import az.developia.libraryelchinemirov.exception.OurRuntimeException;
 
-
 @Service
 public class LibrarianService {
 	@Autowired
-	private LibrarianDAO librarianDAO;
-	@Autowired
 	private UserDAO userDAO;
 	@Autowired
-	private BorrowedBookDAO borrowedBookDAO;
+	private LibrarianDAO librarianRepository;
 	@Autowired
-	private BookDAO bookDAO;
+	private BorrowedBookDAO borrowedBookRepository;
+	@Autowired
+	private BookDAO bookRepository;
 	@Autowired 
-	private StudentDAO studentDAO;
+	private StudentDAO studentRepository;
 	
-	 	
-
-
+	
 	public void registerLibrarian(LibrarianEntity librarian) {
-        librarian.setPassword("{noop}" + librarian.getPassword());
-        librarianDAO.save(librarian);
+        librarian.setPassword("{noop}" + librarian.getPassword());		//kitabxanaci register edir
+        librarianRepository.save(librarian);
 
         
         UserEntity user = new UserEntity();
         user.setUsername(librarian.getUsername());
+       
         user.setEnabled(true); 
-
         user.setType("librarian");
         userDAO.addAdminAuthorities(user.getUsername());
+        
         userDAO.save(user);
     }
 
-	public LibrarianEntity findById(Integer librarianId) {
-		return librarianDAO.findById(librarianId)
-		.orElseThrow(() -> new IllegalArgumentException("Bele bir id-le Librarian yoxdur: " + librarianId));
+	public LibrarianEntity findById(Long librarianId) {
+		return librarianRepository.findById(librarianId)
+				.orElseThrow(() -> new IllegalArgumentException("Kitabxanaci tapilmadi " + librarianId));	//kitabxanaciya gore tapir
 	}
-	 public void borrowBook(Integer studentId, Integer bookId) {
-	        StudentEntity student = studentDAO.findById(studentId)
+	
+	
+	 public void giveBook(Long studentId, Long bookId) {										//kitab verir studente 
+	        StudentEntity student = studentRepository.findById(studentId)
 	                .orElseThrow(() -> new OurRuntimeException("Sagird tapilmadi",null));
-	        BookEntity book = bookDAO.findById(bookId)
+	        BookEntity book = bookRepository.findById(bookId)
 	                .orElseThrow(() -> new OurRuntimeException("Kitab tapilmadi",null));
 
 	        
 	        if (book.isAvailableForBorrowing()) {
-	           book.setBorrowedDate(LocalDateTime.now());
+	        	book.setTakeDate(LocalDateTime.now());
 	            book.setAvailableForBorrowing(false);
 	            
-	            bookDAO.save(book);
+	            bookRepository.save(book);
 
 	           
-	            Borrowed borrowed = new Borrowed();
-	            borrowed.setStudentid(student);
-	            borrowed.setBook(book);
-	            borrowedBookDAO.save(borrowed);
+	            Borrowed takenBook = new Borrowed();
+	            takenBook.setStudent(student);
+	            takenBook.setBook(book);
+	           
+	            borrowedBookRepository.save(takenBook);
 	        } else {
 	            throw new OurRuntimeException("Kitab verilmek ucun uygun deyil",null);
 	        }
 	    }
 
-	    public List<Borrowed> getBorrowedBooksByStudent(Integer studentId) {
-	        StudentEntity student = studentDAO.findById(studentId)
-	                .orElseThrow(() -> new OurRuntimeException("Sagird tapilmadi",null));
-	        return borrowedBookDAO.findByStudent(student);
-	    }
-}
+	    
 
+	    public List<Borrowed> getTakenBooksByStudent(Long studentId) {			//sagirde gore verilmis kitabi tapsin (data filtering)
+	        StudentEntity student = studentRepository.findById(studentId)
+	                .orElseThrow(() -> new OurRuntimeException("Sagird tapilmadi",null));
+	        return borrowedBookRepository.findByStudent(student);
+	    }
+	    
+	    
+}
 
