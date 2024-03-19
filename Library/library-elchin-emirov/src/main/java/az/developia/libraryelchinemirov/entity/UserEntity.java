@@ -16,12 +16,6 @@ public class UserEntity {
     private String type;
 
     private boolean enabled; 
-    
-    
-
-   
-
-	
 
 	public String getUsername() {
         return username;

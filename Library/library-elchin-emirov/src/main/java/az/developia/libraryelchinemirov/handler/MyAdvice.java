@@ -44,7 +44,5 @@ public class MyAdvice {
 
 		return resp;
 	}
-	// best p korlanib
-	// validation
-
+	
 }

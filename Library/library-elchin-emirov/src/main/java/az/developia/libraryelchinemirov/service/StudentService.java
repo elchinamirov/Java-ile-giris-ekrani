@@ -33,7 +33,7 @@ public class StudentService {
 	private BookDAO bookDAO;
 	
 	
-	//sagirdi redakte edir
+	
 	
 	public void update(StudentEntity s) {			
 		Optional<StudentEntity> studentOptional = studentDAO.findById(s.getId());
@@ -54,12 +54,12 @@ public class StudentService {
 	}
 
 	public String DeleteStudent(Long id) {
-		studentDAO.deleteById(id);										//sagirdi silir
+		studentDAO.deleteById(id);									
 		return "deleted" + id;
 	}
 
 	
-	public void registerStudent(StudentEntity student) {			//sagirdi register edir
+	public void registerStudent(StudentEntity student) {			
         student.setPassword("{noop}" + student.getPassword());
         studentDAO.save(student);
 
@@ -76,10 +76,10 @@ public class StudentService {
     }
 	
 	public List<Borrowed> getBooksTakenByStudent(Long studentId) {
-        return borrowedBookRepository.findByStudentId(studentId);				//sagirde gore goturulmus kitabi tapir (data filtering)
+        return borrowedBookRepository.findByStudentId(studentId);				
     }
 
-    public void returnBook(Long takenBookId) {														//kitablari sagirdden geri alir 
+    public void returnBook(Long takenBookId) {														
         Borrowed takenBook = borrowedBookRepository.findById(takenBookId)
                 .orElseThrow(() -> new OurRuntimeException("Taken book not found",null));
 

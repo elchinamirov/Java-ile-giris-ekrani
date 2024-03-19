@@ -34,7 +34,7 @@ public class LibrarianService {
 	
 	
 	public void registerLibrarian(LibrarianEntity librarian) {
-        librarian.setPassword("{noop}" + librarian.getPassword());		//kitabxanaci register edir
+        librarian.setPassword("{noop}" + librarian.getPassword());		
         librarianRepository.save(librarian);
 
         
@@ -50,11 +50,11 @@ public class LibrarianService {
 
 	public LibrarianEntity findById(Long librarianId) {
 		return librarianRepository.findById(librarianId)
-				.orElseThrow(() -> new IllegalArgumentException("Kitabxanaci tapilmadi " + librarianId));	//kitabxanaciya gore tapir
+				.orElseThrow(() -> new IllegalArgumentException("Kitabxanaci tapilmadi " + librarianId));	
 	}
 	
 	
-	 public void giveBook(Long studentId, Long bookId) {										//kitab verir studente 
+	 public void giveBook(Long studentId, Long bookId) {										
 	        StudentEntity student = studentRepository.findById(studentId)
 	                .orElseThrow(() -> new OurRuntimeException("Sagird tapilmadi",null));
 	        BookEntity book = bookRepository.findById(bookId)
@@ -80,7 +80,7 @@ public class LibrarianService {
 
 	    
 
-	    public List<Borrowed> getTakenBooksByStudent(Long studentId) {			//sagirde gore verilmis kitabi tapsin (data filtering)
+	    public List<Borrowed> getTakenBooksByStudent(Long studentId) {			
 	        StudentEntity student = studentRepository.findById(studentId)
 	                .orElseThrow(() -> new OurRuntimeException("Sagird tapilmadi",null));
 	        return borrowedBookRepository.findByStudent(student);

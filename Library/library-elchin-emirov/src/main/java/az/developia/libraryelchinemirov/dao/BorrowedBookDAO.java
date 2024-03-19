@@ -10,7 +10,7 @@ import az.developia.libraryelchinemirov.entity.Borrowed;
 import az.developia.libraryelchinemirov.entity.StudentEntity;
 
 public interface BorrowedBookDAO extends JpaRepository<Borrowed, Long>{
-	 List<Borrowed> findByStudent(StudentEntity student);	//Telebeye esasen tapmaq ucun
-	 List<Borrowed> findByStudentId(Long studentId);			//telebenin id'sine esasen tapmaq ucun
+	 List<Borrowed> findByStudent(StudentEntity student);	
+	 List<Borrowed> findByStudentId(Long studentId);			
 
 }

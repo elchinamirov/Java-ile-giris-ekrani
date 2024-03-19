@@ -34,7 +34,6 @@ import az.developia.libraryelchinemirov.service.LibrarianService;
 @CrossOrigin(origins = "*")
 
 public class BookRestController {
-
 	@Autowired
 	private BookDAO bookDAO;
 	@Autowired
@@ -64,7 +63,7 @@ public class BookRestController {
 
 	@GetMapping("/findByLibrarianId/{book_id}")		
 	@PreAuthorize(value = "hasAuthority('ROLE_LIBRARIAN')")	
-	//kitabi librarian id-sine gore tapir (data filtering)
+	
 	public Page<BookEntity> getBooksByLibrarian(@RequestParam Long librarianId,
 			@RequestParam(defaultValue = "0") int page, @RequestParam(defaultValue = "1") int size) {
 		LibrarianEntity librarian = librarianService.findById(librarianId);

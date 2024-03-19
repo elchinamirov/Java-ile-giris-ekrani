@@ -22,11 +22,11 @@ public class BookService {
 	private BookDAO bookDAO;
 
 	
-	 public List<BookEntity> getAllBooks() {		//butun kitablari gosterir
+	 public List<BookEntity> getAllBooks() {		
 	        return bookDAO.findAll();
 	    }
 	 
-	public BookEntity registerBook(BookEntity book,LibrarianEntity librarian) {			//kitab qeydiyyatdan kecirir
+	public BookEntity registerBook(BookEntity book,LibrarianEntity librarian) {		
 		
 			
 			book.setLibrarian(librarian);
@@ -35,18 +35,18 @@ public class BookService {
 			
 		return bookDAO.save(book);
 	}
-	 public Optional<BookEntity> findById(Long id) {		//kitablari geri qaytarir id-sine gore
+	 public Optional<BookEntity> findById(Long id) {	
 	        return bookDAO.findById(id);
 	    }
 
-	public String DeleteBook(Long id) {						//kitab silir
+	public String DeleteBook(Long id) {						
 		bookDAO.deleteById(id);
 		return "deleted" + id;
 	}
 
 	public BookEntity updateBook(@PathVariable Long id, BookEntity updatedBook) {
 		Optional<BookEntity> optionalBook = bookDAO.findById(id);
-		if (optionalBook.isPresent()) {															//kitab redakte edir
+		if (optionalBook.isPresent()) {															
 			BookEntity existingBook = optionalBook.get();
 
 			existingBook.setPrice(updatedBook.getPrice());
@@ -59,7 +59,7 @@ public class BookService {
 		}
 	}
 
-	public Page<BookEntity> getBooksByLibrarian(LibrarianEntity librarian, Pageable pageable) {		//librariana gore kitabi tapir
+	public Page<BookEntity> getBooksByLibrarian(LibrarianEntity librarian, Pageable pageable) {		
 		return bookDAO.findByLibrarian(librarian, pageable);
 	}
 }

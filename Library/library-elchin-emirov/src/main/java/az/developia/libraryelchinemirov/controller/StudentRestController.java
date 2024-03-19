@@ -33,19 +33,19 @@ public class StudentRestController {
 	private StudentService studentService;
 	@Autowired
 	private StudentDAO studentDAO;
-	
+
 	@Autowired
 	private LibrarianService librarianService;
 
 	@GetMapping
-	@PreAuthorize(value = "hasAuthority('ROLE_LIBRARIAN')")				//sagirlerin hamisini gosterir
+	@PreAuthorize(value = "hasAuthority('ROLE_LIBRARIAN')")			
 	public List<StudentEntity> showStudents() {
 		return studentDAO.findAll();
 	}
 
 	@GetMapping(path = "/{id}")
 	@PreAuthorize(value = "hasAuthority('ROLE_LIBRARIAN')")
-	public StudentEntity findById(@PathVariable(name = "id") Long id) {		//sagirdi id-sine gore tapir
+	public StudentEntity findById(@PathVariable(name = "id") Long id) {		
 
 		return studentDAO.findById(id).get();
 	}
@@ -54,7 +54,7 @@ public class StudentRestController {
 
 	@PutMapping
 	@PreAuthorize(value = "hasAuthority('ROLE_LIBRARIAN')")
-																							//sagirdi redakte edir
+																							
 	public void update(@javax.validation.Valid @RequestBody StudentEntity s) {
 		studentService.update(s);
 	}
@@ -62,7 +62,7 @@ public class StudentRestController {
 	@DeleteMapping(path = "/delete/{id}")
 	@PreAuthorize(value = "hasAuthority('ROLE_LIBRARIAN')")
 
-	public void deletefunction(@PathVariable Long id) {										//sagirdi id-sine gore silir
+	public void deletefunction(@PathVariable Long id) {										
 		if (studentDAO.existsById(id)) {
 			studentService.DeleteStudent(id);
 		} else {
@@ -72,12 +72,12 @@ public class StudentRestController {
 	}
 	@PostMapping(path = "/register")
 	@PreAuthorize(value = "hasAuthority('ROLE_LIBRARIAN')")
-    public void registerStudent(@Valid @RequestBody StudentEntity student) {			//sagird register edir
+    public void registerStudent(@Valid @RequestBody StudentEntity student) {		
         studentService.registerStudent(student);
     }
 	
 	 @PostMapping("/returnBook")
-	 @PreAuthorize(value = "hasAuthority('ROLE_LIBRARIAN')")								//kitabi geri qaytarilmasi qeyd edir
+	 @PreAuthorize(value = "hasAuthority('ROLE_LIBRARIAN')")								
 	    public ResponseEntity<String> returnBook(@RequestParam Long takenBookId) {
 	      
 	            studentService.returnBook(takenBookId);
@@ -89,7 +89,7 @@ public class StudentRestController {
 	    @PreAuthorize(value = "hasAuthority('ROLE_LIBRARIAN')")	
 	    public ResponseEntity<List<Borrowed>> getTakenBooksByStudent(@PathVariable Long studentId) {
 	       
-	            List<Borrowed> takenBooks = librarianService.getTakenBooksByStudent(studentId);		//goturulmus kitablari sagirde gore tapir
+	            List<Borrowed> takenBooks = librarianService.getTakenBooksByStudent(studentId);		
 	            return ResponseEntity.ok(takenBooks);
 	       
 	    }

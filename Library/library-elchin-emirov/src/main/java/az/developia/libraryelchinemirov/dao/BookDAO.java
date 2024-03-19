@@ -10,6 +10,6 @@ import az.developia.libraryelchinemirov.entity.LibrarianEntity;
 
 @Repository
 public interface BookDAO extends JpaRepository<BookEntity, Long> {
-	Page<BookEntity> findByLibrarian(LibrarianEntity librarian, Pageable pageable);		//kitabxanaciya esasen tapmaq methodu
+	Page<BookEntity> findByLibrarian(LibrarianEntity librarian, Pageable pageable);	
 
 }

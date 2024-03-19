@@ -16,10 +16,10 @@ public class AuthorityEntity {
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Integer id;
 
-	// Hüquq verilən istifadəçi adı
+	
 	private String username;
 
-	// İstifadəçiyə verilən hüququn adı
+	
 	private String authority;
 
 	public Integer getId() {

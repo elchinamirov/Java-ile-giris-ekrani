@@ -14,10 +14,10 @@ public interface UserDAO extends JpaRepository<UserEntity, String> {
 
 	@Query(value = "insert into authorities (username,authority) select ?1,authority from roles where admin=1",nativeQuery = true)
 	@Modifying
-	void addAdminAuthorities(String username);		// register ederken user ve admin ucun rol tertib edir
+	void addAdminAuthorities(String username);	
 	
 	@Query(value = "insert into authorities (username,authority) select ?1,authority from roles where admin=0",nativeQuery = true)
 	@Modifying
-	void addUserAuthorities(String username);		// her user ucun admin olmayan rollar verir (register ederken her user ucun admin olmayan  rol tertib edir)
+	void addUserAuthorities(String username);		
 	
 }

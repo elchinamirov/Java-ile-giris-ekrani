@@ -24,7 +24,6 @@ public class LibrarianRestController {
 	
 	@PostMapping("/register/librarian")			
 	@PreAuthorize(value = "hasAuthority('ROLE_LIBRARIAN')")	
-	//kitabxanaci register etmek 
     public void registerLibrarian(@Valid @RequestBody LibrarianEntity librarian) {
         librarianService.registerLibrarian(librarian);
     }
