@@ -10,13 +10,9 @@ public class UserEntity {
 
     @Id
     private String username;
-
     private String password;
-
     private String type;
-
-    private boolean enabled; 
-
+    private boolean enabled;
 	public String getUsername() {
         return username;
     }

@@ -33,8 +33,6 @@ public class LibrarianEntity {
 		this.username = username;
 	}
 
-	
-
 	public Long getLibrarianId() {
 		return LibrarianId;
 	}
